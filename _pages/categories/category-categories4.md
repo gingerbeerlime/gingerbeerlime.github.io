@@ -1,7 +1,7 @@
 ---
-title: "Categories4"
+title: "Vue"
 layout: category
-permalink: /categories/categories4/
+permalink: /frontend/vue/
 author_profile: true
 taxonomy: Categories4
 sidebar:
