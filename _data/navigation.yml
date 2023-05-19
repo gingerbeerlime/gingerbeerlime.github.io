@@ -19,12 +19,12 @@ main:
 # 2022.02.15 sidebar update : simple ver.
 categories:
   - title: "JavaScript"
-    url: /frontend/javascript/
+    url: /categories/javascript/
   - title: "HTML"
-    url: /frontend/html/
+    url: /categories/html/
   - title: "CSS"
-    url: /frontend/css/
+    url: /categories/css/
   - title: "Vue"
-    url: /frontend/vue/
+    url: /categories/vue/
   - title: "AWS"
-    url: /aws/
+    url: /categories/aws/

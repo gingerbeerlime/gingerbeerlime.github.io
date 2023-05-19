@@ -1,9 +1,9 @@
 ---
-title: "AWS"
+title: "Vue"
 layout: category
-permalink: /aws/
+permalink: /categories/vue/
 author_profile: true
-taxonomy: Categories4
+taxonomy: Vue
 sidebar:
   nav: "categories"
 ---

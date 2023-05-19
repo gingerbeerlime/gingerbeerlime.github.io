@@ -99,10 +99,10 @@ analytics:
 # Site Author
 author:
   name: "gingerbeer" # 블로그 닉네임
-  avatar: "/assets/images/meee.png" # 블로그 프로필 사진
+  avatar: "/assets/images/github_profile_image.png" # 블로그 프로필 사진
   #   bio              : "hi all!"
-  # location         : "Seoul, Korea"
-  # email            : "youremailhere@xxxxxx.com"
+  location         : "Seoul, Korea"
+  email            : "lsumin1127@gmail.com"
 
   links: # 사이트 링크
 #     - label: "Email"
