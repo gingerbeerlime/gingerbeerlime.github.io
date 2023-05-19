@@ -22,7 +22,7 @@ last_modified_at: 2023-05-18
 
 ***
 
-### 데이터 바인딩
+### ✅ 데이터 바인딩
 
 뷰 인스턴스에서 정의한 속성들을 화면에 표시하는 방법
 Reactivity 특성 반영, 데이터 변화를 감지하여 업데이트됨.
@@ -60,7 +60,7 @@ Reactivity 특성 반영, 데이터 변화를 감지하여 업데이트됨.
 
 ***
 
-### 뷰 디렉티브
+### ✅ 뷰 디렉티브
 
 HTML 태그 안에 'v-' 접두사를 가지는 모든 속성. 뷰로 화면의 요소를 더 쉽게 조작하기 위한 문법이다.
 
@@ -130,12 +130,14 @@ input, select, textarea 태그에만 사용 가능하다.
 
 ***
 
-### computed, watch 속성
+### ✅ computed, watch 속성
 
 #### 1. computed
 
 - data 속성 값의 변화에 따라 자동으로 다시 연산한다.
 - **캐싱**: 동일한 연산의 반복을 없애기 위해 연산의 결과값을 미리 저장하고 있다가 필요할 때 불러오는 동작
+
+#### 2. computed, methods, watch 사용법
 
 > **computed vs methods**<br/><br/>
   computed는 대상 데이터의 값이 변경되면 자동적으로 수행됨. methods는 호출할 때만 수행됨.<br/>
@@ -145,25 +147,26 @@ input, select, textarea 태그에만 사용 가능하다.
   computed 속성은 내장 API를 활용한 단순 연산에 사용하고(**watch가 꼭 필요한 경우가 아니면 computed를 사용해서 해결**),<br/>
   watch는 상대적으로 시간이 많이 사용되는 무거운 로직이나 데이터 갱신에 따라 데이터를 요청하는 등 **비동기 처리**에 적합하다.
 
-```html
-<body>
-  <div id="app">
-      <p v-bind:class="errorTextColor">Hello</p>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script>
-      new Vue({
-          el: '#app',
-          data: {
-              isError: false
-          },
-          computed: {
-              errorTextColor: function() {
-                  return this.isError? 'warning' : null;
-              }
-          }
-      });
-  </script>
-</body>
+{% raw %}
+```vue
+<template>
+    <div id="app">
+        <p v-bind:class="errorTextColor">Hello</p>
+    </div>
+</template>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isError: false
+        },
+        computed: {
+            errorTextColor: function() {
+                return this.isError? 'warning' : null;
+            }
+        }
+    });
+</script>
 ```
+{% endraw %}
