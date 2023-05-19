@@ -29,29 +29,30 @@ Reactivity 특성 반영, 데이터 변화를 감지하여 업데이트됨.
 
 #### 1. 콧수염 괄호(Mustach tag): 가장 기본적인 데이터 바인딩 방식
 
-```html
-<body>
+{% raw %}
+```vue
+<template>
     <div id="app">
         <p>{{ num }}</p>
         <p>{{ doubleNum }}</p>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-        new Vue({
-            el: '#app',
-            data: {
-                num: 10,
-            },
-            computed: {
-                doubleNum: function() {
-                    return this.num * 2
-                }
+</template>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            num: 10,
+        },
+        computed: {
+            doubleNum: function() {
+                return this.num * 2
             }
-        });
-    </script>
-</body>
+        }
+    });
+</script>
 ```
+{% endraw %}
 
 #### 2. v-bind: 뷰 인스턴스 데이터 속성과 HTML 태그를 연결한다.
 
@@ -65,6 +66,7 @@ HTML 태그 안에 'v-' 접두사를 가지는 모든 속성. 뷰로 화면의 �
 
 - **ex)** v-if, v-for, v-show, v-bind, v-on, v-model
 
+{% raw %}
 ```vue
 <template>
     <div id="app">
@@ -79,7 +81,7 @@ HTML 태그 안에 'v-' 접두사를 가지는 모든 속성. 뷰로 화면의 �
         </div>
     </div>
 </template>
-
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script>
     new Vue({
         el: '#app',
@@ -89,6 +91,7 @@ HTML 태그 안에 'v-' 접두사를 가지는 모든 속성. 뷰로 화면의 �
     });
 </script>
 ```
+{% endraw %}
 
 #### 1. v-if & v-else 와 v-show의 차이점
 
@@ -101,24 +104,25 @@ v-show는 조건이 맞지 않을 때 display="none"으로 보이지 않게된�
 form에서 사용자의 입력 이벤트에 따라 자동으로 양방향으로 데이터가 업데이트됨.
 input, select, textarea 태그에만 사용 가능하다.
 
-```html
-<body>
+{% raw %}
+```vue
+<template>
     <div id="app">
         <input v-model="message" placeholder="edit me"/>
         <p>Message is: {{ message }}</p>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-        new Vue({
-            el: '#app',
-            data: {
-                message: ''
-            }
-        });
-    </script>
-</body>
+</template>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: ''
+        }
+    });
+</script>
 ```
+{% endraw %}
 
 #### 3. v-on을이용한 이벤트 핸들링
 
