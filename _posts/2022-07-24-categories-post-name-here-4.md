@@ -65,7 +65,7 @@ HTML 태그 안에 'v-' 접두사를 가지는 모든 속성. 뷰로 화면의 �
 
 - **ex)** v-if, v-for, v-show, v-bind, v-on, v-model
 
-```html
+```vue
 <body>
     <div id="app">
         <div v-if="loading">
