@@ -66,7 +66,7 @@ HTML 태그 안에 'v-' 접두사를 가지는 모든 속성. 뷰로 화면의 �
 - **ex)** v-if, v-for, v-show, v-bind, v-on, v-model
 
 ```vue
-<body>
+<template>
     <div id="app">
         <div v-if="loading">
             Loading...
@@ -78,17 +78,16 @@ HTML 태그 안에 'v-' 접두사를 가지는 모든 속성. 뷰로 화면의 �
             Loading...
         </div>
     </div>
+</template>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-        new Vue({
-            el: '#app',
-            data: {
-                loading: true
-            }
-        });
-    </script>
-</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            loading: true
+        }
+    });
+</script>
 ```
 
 #### 1. v-if & v-else 와 v-show의 차이점
