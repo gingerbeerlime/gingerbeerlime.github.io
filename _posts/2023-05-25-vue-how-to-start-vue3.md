@@ -64,7 +64,7 @@ Vue2의 디폴트 api 스타일
 각 기능을 함수로 묶어 처리하기 때문에 유지보수가 편하다.
 보다 복잡하고 규모가 큰 애플리케이션을 구축할 때는 Composition API + Single-File Components를 사용하는 것이 좋다.
 
-##### setup
+##### setup 함수
 
 {% raw %}
 ```vue
@@ -131,7 +131,7 @@ Vue2의 디폴트 api 스타일
 
 #### Vue2
 
-<template>태그 안에 root node 하나만 있어야함
+template태그 안에 root node 하나만 있어야함
 
 {% raw %}
 ```vue
