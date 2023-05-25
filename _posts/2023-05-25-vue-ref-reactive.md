@@ -95,13 +95,15 @@ Vue3에서는 <strong>reactive reference</strong>를 의미한다.
 ```
 {% endraw %}
 
+***
+
 ### ✅ ref와 reactive 차이점
 
-> **Ref**<br/><br/>
+> **Ref**<br/>
 - String, Number, Object 등 어떤 타입에서든 사용 가능<br/>
 - .value를 붙여 데이터값에 접근할 수 있음(teplate 태그 안에서는 붙이지 않아도됨.)
 
-> **Reactive**<br/><br/>
+> **Reactive**<br/>
 - Object, Array, Map, Set과 같은 타입에서만 사용 가능<br/>
 - .value를 붙이지 않고 접근할 수 있음<br/>
 - String, Number의 값을 초기에 지정하여 사용할 경우 원시값에 대해서는 반응형을 가지지 않음
