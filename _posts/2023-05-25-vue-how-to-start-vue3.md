@@ -1,6 +1,6 @@
 ---
 title: "Vue2에서 Vue3로"
-excerpt: "Vue2에서 Vue3 달라진 점 살펴보기:: composition api, fragments(다중 루트 노드 컴포넌트), emit 옵션"
+excerpt: "Vue2에서 Vue3 달라진 점 살펴보기:: composition api, fragments(다중 루트 노드 컴포넌트), creatingApp, watch, emit"
 
 categories:
   - Vue
@@ -12,14 +12,14 @@ permalink: /categories/vue3/how-to-start-vue3/
 toc: true
 toc_sticky: true
 
-date: 2023-05-19
-last_modified_at: 2023-05-19
+date: 2023-05-25
+last_modified_at: 2023-05-25
 ---
 
 ## Vue3?
 
-Vue2에서 Vue3로 버전이 업데이트 되면서 몇 가지 달라진 특징이 있다.</br>
-Composition API,
+Vue2에서 Vue3로 버전이 업데이트 되면서 몇 가지 달라진 특징이 있다.<br>
+Composition API, setup함수, creatingApp, multiple root node, watch에 대해 알아보자.
 
 ***
 
@@ -32,7 +32,7 @@ Reactivity 특성 반영, 데이터 변화를 감지하여 업데이트됨.
 
 Vue2의 디폴트 api 스타일
 
-{ %raw% }
+{% raw %}
 ```vue
     <template>
         <button @click="increase">Num is: {{ num }}</button>
@@ -56,7 +56,7 @@ Vue2의 디폴트 api 스타일
     }
     </script>
 ```
-{ %endraw% }
+{% endraw %}
 
 #### 🌟2. Composition API
 
@@ -66,7 +66,7 @@ Vue2의 디폴트 api 스타일
 
 ##### setup
 
-{ %raw% }
+{% raw %}
 ```vue
 <template>
     <button @click="increase">Num is: {{ num }}</button>
@@ -88,7 +88,7 @@ Vue2의 디폴트 api 스타일
     })
 </script>
 ```
-{ %endraw% }
+{% endraw %}
 
 ***
 
@@ -96,7 +96,7 @@ Vue2의 디폴트 api 스타일
 
 #### Vue2
 
-{ %raw% }
+{% raw %}
 ```vue
 <script>
     import Vue from 'vue'
@@ -109,11 +109,11 @@ Vue2의 디폴트 api 스타일
     }).$mount('#app')
 </script>
 ```
-{ %raw% }
+{% endraw %}
 
 #### Vue3
 
-{ %raw% }
+{% raw %}
 ```vue
 <script>
     import { createApp } from 'vue'
@@ -123,7 +123,7 @@ Vue2의 디폴트 api 스타일
     createApp(App).mount('#app')
 </script>
 ```
-{ %endraw% }
+{% endraw %}
 
 ***
 
@@ -133,7 +133,7 @@ Vue2의 디폴트 api 스타일
 
 <template>태그 안에 root node 하나만 있어야함
 
-{ %raw% }
+{% raw %}
 ```vue
 <template>
     <div>
@@ -143,13 +143,13 @@ Vue2의 디폴트 api 스타일
     </div>
 </template>
 ```
-{ %raw% }
+{% endraw %}
 
 #### Vue3
 
 <template>태그 안에 root node 여러 개 작성가능
 
-{ %raw% }
+{% raw %}
 ```vue
 <template>
     <header></header>
@@ -157,7 +157,7 @@ Vue2의 디폴트 api 스타일
     <footer></footer>
 </template>
 ```
-{ %raw% }
+{% endraw %}
 
 ***
 
@@ -165,7 +165,7 @@ Vue2의 디폴트 api 스타일
 
 #### Vue2
 
-{ %raw% }
+{% raw %}
 ```vue
 <script>
     export default {
@@ -182,15 +182,15 @@ Vue2의 디폴트 api 스타일
     }
 </script>
 ```
-{ %raw% }
+{% endraw %}
 
 #### Vue3
 
-{ %raw% }
+{% raw %}
 ```vue
 const num = ref('')
 watchEffect(() => {
     console.log(num.value)
 })
 ```
-{ %raw% }
+{% endraw %}
