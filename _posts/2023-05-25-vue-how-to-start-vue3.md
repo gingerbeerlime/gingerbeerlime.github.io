@@ -147,9 +147,10 @@ template태그 안에 root node 하나만 있어야함
 
 #### Vue3
 
-<template>태그 안에 root node 여러 개 작성가능
+template태그 안에 root node 여러 개 작성가능
 
 {% raw %}
+
 ```vue
 <template>
     <header></header>
@@ -157,6 +158,7 @@ template태그 안에 root node 하나만 있어야함
     <footer></footer>
 </template>
 ```
+
 {% endraw %}
 
 ***
@@ -166,6 +168,7 @@ template태그 안에 root node 하나만 있어야함
 #### Vue2
 
 {% raw %}
+
 ```vue
 <script>
     export default {
@@ -182,15 +185,18 @@ template태그 안에 root node 하나만 있어야함
     }
 </script>
 ```
+
 {% endraw %}
 
 #### Vue3
 
 {% raw %}
+
 ```vue
 const num = ref('')
 watchEffect(() => {
     console.log(num.value)
 })
 ```
+
 {% endraw %}
