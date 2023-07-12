@@ -163,7 +163,7 @@ template태그 안에 root node 여러 개 작성가능
 
 ***
 
-### ✅ & Watch 사용법
+### ✅ Watch & WatchEffect 사용법
 
 #### Vue2
 
@@ -188,15 +188,19 @@ template태그 안에 root node 여러 개 작성가능
 
 {% endraw %}
 
-#### Vue3
+#### Vue3 - watchEffect()
+
+watch 사용법은 동일, watchEffect는 함수 내에 포함된 모든 데이터에 반응성으로 작동한다.
 
 {% raw %}
 
 ```vue
-const num = ref('')
-watchEffect(() => {
-    console.log(num.value)
-})
+<script setup>
+    const num = ref('')
+    watchEffect(() => {
+        console.log(num.value)
+    })
+</script>
 ```
 
 {% endraw %}
