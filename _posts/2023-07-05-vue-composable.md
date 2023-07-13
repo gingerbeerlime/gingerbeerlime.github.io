@@ -13,7 +13,7 @@ toc: true
 toc_sticky: true
 
 date: 2023-07-05
-last_modified_at: 2023-07-12
+last_modified_at: 2023-07-13
 ---
 
 ## Composable?
@@ -52,7 +52,7 @@ Vue Composition API를 활용하여 상태 저장 로직을 캡슐화하고 재�
 
 {% endraw %}
 
-:arrow_down:컴포저블 함수로 만들기
+🔽컴포저블 함수로 만들기
 
 {% raw %}
 
@@ -74,7 +74,7 @@ Vue Composition API를 활용하여 상태 저장 로직을 캡슐화하고 재�
 
 {% endraw %}
 
-:arrow_down:컴포넌트에서 컴포저블 함수 사용하기
+🔽컴포넌트에서 컴포저블 함수 사용하기
 
 {% raw %}
 
@@ -88,9 +88,11 @@ Vue Composition API를 활용하여 상태 저장 로직을 캡슐화하고 재�
 
 {% endraw %}
 
-- option api를 사용하는 경우, 컴포저블 함수는 setup()내에서 호출되어야하면 반환된 바인딩도 setup()에서 반환되어야한다.
+- option api를 사용하는 경우, 컴포저블 함수는 setup()내에서 호출되어야하며, 반환된 바인딩도 setup()에서 반환되어야한다.
 
-:heavy_exclamation_mark:URL이 변경될 때 다시 데이터를 **FETCH**해오기 위해서는 **ref**를 사용해야한다.
+***
+
+⚠URL이 변경될 때 다시 데이터를 **FETCH**해오기 위해서는 **ref**를 사용해야한다.
 
 {% raw %}
 
