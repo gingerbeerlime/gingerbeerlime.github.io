@@ -1,6 +1,6 @@
 ---
 title: "Vue3 플러그인"
-excerpt: "Vue3에 플러그인 사용하기"
+excerpt: "Vue3에 플러그:: 전역 수준의 공통 함수 작성하고 등록하기"
 
 categories:
   - Vue
@@ -24,10 +24,10 @@ last_modified_at: 2023-07-13
 
 ### ✅ Plugin 활용
 
-- <span style="background-color: #F7DDBE">app.component()</span> : 메서드를 사용해 전역 컴포넌트 등록할 때
-- <span style="background-color: #F7DDBE">app.directive()</span> : 메서드를 사용해 커스텀 디렉티브 등록할 때
-- <span style="background-color: #F7DDBE">app.provide()</span> : 앱 전체에 리소스(메서드 or 데이터)를 주입할 때(provide & inject)
-- <span style="background-color: #F7DDBE">app.config.globalProperties</span>전역 애플리케이션 인스턴스에 속성 또는 메서드를 추가하고자 할 때 app.config.globalProperties에 연결하여 추가
+- <span style="background-color: #F7DDBE; font-weight: bold">app.component()</span> : 메서드를 사용해 전역 컴포넌트 등록할 때
+- <span style="background-color: #F7DDBE; font-weight: bold">app.directive()</span> : 메서드를 사용해 커스텀 디렉티브 등록할 때
+- <span style="background-color: #F7DDBE; font-weight: bold">app.provide()</span> : 앱 전체에 리소스(메서드 or 데이터)를 주입할 때(provide & inject)
+- <span style="background-color: #F7DDBE; font-weight: bold">app.config.globalProperties</span> : 전역 애플리케이션 인스턴스에 속성 또는 메서드를 추가하고자 할 때 app.config.globalProperties에 연결하여 추가
 
 ***
 
