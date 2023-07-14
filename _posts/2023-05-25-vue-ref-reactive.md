@@ -13,7 +13,7 @@ toc: true
 toc_sticky: true
 
 date: 2023-05-25
-last_modified_at: 2023-05-25
+last_modified_at: 2023-07-14
 ---
 
 ## Composition API_ref, reactive?
@@ -31,6 +31,7 @@ Vue3에서는 <strong>reactive reference</strong>를 의미한다.
 #### ref 사용법
 
 {% raw %}
+
 ```vue
 <template>
     <div>
@@ -57,6 +58,7 @@ Vue3에서는 <strong>reactive reference</strong>를 의미한다.
     }
 </script>
 ```
+
 {% endraw %}
 
 ***
@@ -66,6 +68,7 @@ Vue3에서는 <strong>reactive reference</strong>를 의미한다.
 #### reactive 사용법
 
 {% raw %}
+
 ```vue
 <template>
     <div>
@@ -93,6 +96,7 @@ Vue3에서는 <strong>reactive reference</strong>를 의미한다.
     }
 </script>
 ```
+
 {% endraw %}
 
 ***
@@ -101,9 +105,11 @@ Vue3에서는 <strong>reactive reference</strong>를 의미한다.
 
 > **Ref**<br/>
 - String, Number, Object 등 어떤 타입에서든 사용 가능<br/>
-- .value를 붙여 데이터값에 접근할 수 있음(template 태그 안에서는 붙이지 않아도됨.)
+- .value를 붙여 데이터값에 접근할 수 있음(template 태그 안에서는 붙이지 않아도됨.)<br/>
+- ref는 원시타입의 상태변화를 감지하지 못하는 reactive를 보완하기 위한 것으로 나왔지만, ref 또한 내부는 reactive를 사용하도록 구현되어있다.
 
 > **Reactive**<br/>
 - Object, Array, Map, Set과 같은 타입에서만 사용 가능<br/>
+- Proxy를 만들어 프로퍼티의 변화를 추적한다.<br/>
 - .value를 붙이지 않고 접근할 수 있음<br/>
 - String, Number의 값을 초기에 지정하여 사용할 경우 원시값에 대해서는 반응형을 가지지 않음
