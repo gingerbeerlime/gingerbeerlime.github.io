@@ -1,6 +1,6 @@
 ---
 title: "toRef와 toRefs"
-excerpt: "toRef, toRefs 사용하기:: reactive 반응성을 잃지 않고 데이터 전달하기"
+excerpt: "toRef, toRefs 사용하기:: reactive 데이터 복사에서 반응성 유지"
 
 categories:
   - Vue
