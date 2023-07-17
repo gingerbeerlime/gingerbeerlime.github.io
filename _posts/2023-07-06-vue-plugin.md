@@ -24,6 +24,13 @@ last_modified_at: 2023-07-13
 
 ### ✅ Plugin 활용
 
+- 전역 메서드나 전역 속성을 추가할 때
+- 글로벌 에셋을 추가할 때(directive, filter, transition 등)
+- Composable을 전역으로 주입할 때
+- vue.prototype의 인스턴스 메서드를 연결할 때
+- 기존의 api를 조합하는 라이브러리를 등록할 때
+
+> <br>
 - <span style="background-color: #F7DDBE; font-weight: bold">app.component()</span> : 메서드를 사용해 전역 컴포넌트 등록할 때
 - <span style="background-color: #F7DDBE; font-weight: bold">app.directive()</span> : 메서드를 사용해 커스텀 디렉티브 등록할 때
 - <span style="background-color: #F7DDBE; font-weight: bold">app.provide()</span> : 앱 전체에 리소스(메서드 or 데이터)를 주입할 때(provide & inject)
