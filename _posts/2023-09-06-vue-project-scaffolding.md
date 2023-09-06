@@ -63,7 +63,7 @@ vscode, node, vue, vue cli가 설치되어 있어야합니다
 
 🔽 Vuetify3 공식사이트
 
-<a href="[https://www.google.com/](https://vuetifyjs.com/en/getting-started/installation/)" target="_blank">Get started with Vuetify 3</a>
+[Get started with vuetify3](https://vuetifyjs.com/en/getting-started/installation/)
 
 {% raw %}
 
@@ -94,9 +94,10 @@ vuetify프로젝트를 먼저 깔고 시작하니 간단했다!<br/>
 새로 설치한 Typescript Vue Plugin(Volar)와 기존에 설치되어있던 Vetur가 충돌하면서 생긴 에러인듯하다<br>
 **Vetur를 비활성화하니 에러가 없어졌다!**<br>
 
-Vetur와 Volar은 vue프레임워크에서 코드 작성시 하이라이팅, 에러체크, 포맷팅, 디버깅, 코드 자동완성 등의 코딩을 편하게 도와주는 기능을 제공한다<br>
-알아보니 Vue2에서 Vue3로 업데이트되면서 보조 확장 프로그램도 Vetur에서 Volar로 권장된다고 한다<br>
-Volar은 Typescript 지원이 잘되고, Monorepo 구조에서도 잘 작동한다<br>
-하지만 Vue2버전에서는 유지보수에서 여전히 Vetur를 사용하는 것이 좋기 때문에 해당 프로젝트에만 Vetur를 사용하도록 설정할 수 있다<br>
+> **Vetur vs Volar**<br/>
+- Vetur와 Volar은 vue프레임워크에서 코드 작성시 **하이라이팅, 에러체크, 포맷팅, 디버깅, 코드 자동완성**등의 코딩을 편하게 도와주는 기능을 제공한다<br/>
+- Vue2에서 Vue3로 업데이트되면서 보조 확장 프로그램도 Vetur에서 Volar로 권장된다<br/>
+- Volar은 Typescript 지원이 잘되고, Monorepo 구조에서도 잘 작동한다<br/>
+- 하지만 Vue2버전에서는 유지보수에서 여전히 Vetur를 사용하는 것이 좋기 때문에 해당 프로젝트에만 Vetur를 사용하도록 설정할 수 있다(extention 아이콘 마우스 우클릭 > 사용(작업영역)
 
 ***
