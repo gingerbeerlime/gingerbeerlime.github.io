@@ -57,12 +57,10 @@ vscode, node, vue, vue cli가 설치되어 있어야합니다
 
 (각 extention별 역할 추가)
 
-***
-
 #### 2. Vuetify 프로젝트 생성
 
 🔽 Vuetify3 공식사이트
-![Vuetify Install](https://vuetifyjs.com/en/getting-started/installation/)
+[Vuetify Install](https://vuetifyjs.com/en/getting-started/installation/)
 
 {% raw %}
 
@@ -73,6 +71,7 @@ npm create vuetify
 {% endraw %}
 
 option 선택
-![screenshot](../assets/images/posts_img/contents/start_vuetify_project.png)
+
+![vuetifyOption](../assets/images/posts_img/contents/start_vuetify_project.png)
 
 ***
