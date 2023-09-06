@@ -57,6 +57,8 @@ vscode, node, vue, vue cli가 설치되어 있어야합니다
 
 저는 이 3개를 설치했습니다
 
+***
+
 #### 2. Vuetify 프로젝트 생성
 
 🔽 Vuetify3 공식사이트
@@ -79,7 +81,7 @@ npm create vuetify
 
 ![vuetify프로젝트로컬실행](https://github.com/gingerbeerlime/gingerbeerlime.github.io/assets/89768065/14da1ee7-4ed7-455c-83c9-528967011276)
 
-npm run dev 했을 때 이 화면이 뜨면 성공이다<br/>
+로컬 실행했을 때 이 화면이 뜨면 성공이다<br/>
 이렇게 하니 vue3, vite, vuetify, typescript, pinia 원하는 옵션들로 프로젝트가 완성되었다<br/>
 vuetify프로젝트를 먼저 깔고 시작하니 간단했다!<br/>
 
@@ -87,7 +89,7 @@ vuetify프로젝트를 먼저 깔고 시작하니 간단했다!<br/>
 
 #### 3. typescript 에러수정
 
-로컬실행은 잘되나 파일에서 에러나는 부분은 수정
+로컬실행은 잘되나 ts에러가 생긴다
 
 ++내용 추후 업데이트
 
