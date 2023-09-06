@@ -51,9 +51,9 @@ vscode, node, vue, vue cli가 설치되어 있어야합니다
 
 🔽vscode extention 설치
 
-- Typescript Vue Plugin(Volar) : Vue에서 TypeSript 지원을 제공하는 공식 VSCode 확장 플러그인
-- Vue3 snippets : 코드 자동 완성
-- HTML CSS Support : css에 정의되어있는 선택자 자동완성
+- **Typescript Vue Plugin(Volar)** : Vue에서 TypeSript를 지원하는 공식 VSCode 확장 플러그인
+- **Vue3 snippets** : 코드 자동 완성
+- **HTML CSS Support** : css에 정의되어있는 선택자 자동완성
 
 저는 이 3개를 설치했습니다
 
@@ -61,7 +61,7 @@ vscode, node, vue, vue cli가 설치되어 있어야합니다
 
 🔽 Vuetify3 공식사이트
 
-[Get started with Vuetify 3](https://vuetifyjs.com/en/getting-started/installation/)
+<a href="[https://www.google.com/](https://vuetifyjs.com/en/getting-started/installation/)" target="_blank">Get started with Vuetify 3</a>
 
 {% raw %}
 
@@ -71,19 +71,24 @@ npm create vuetify
 
 {% endraw %}
 
-option 선택
+##### option 선택
 
 ![vuetify옵션선택](https://github.com/gingerbeerlime/gingerbeerlime.github.io/assets/89768065/f09ad55d-d87c-4868-b4df-ea9c4656e947)
 
-
-***
+##### 프로젝트 생성완료
 
 ![vuetify프로젝트로컬실행](https://github.com/gingerbeerlime/gingerbeerlime.github.io/assets/89768065/14da1ee7-4ed7-455c-83c9-528967011276)
 
-npm run dev 했을 때 이 화면이 뜨면 성공이다
-이렇게 하니 vue3, vite, vuetify, typescript, pinia 원하는 옵션들로 프로젝트가 완성되었다
-vuetify프로젝트를 깔고 시작하니 간단했던 vue3프로젝트 세팅
+npm run dev 했을 때 이 화면이 뜨면 성공이다<br/>
+이렇게 하니 vue3, vite, vuetify, typescript, pinia 원하는 옵션들로 프로젝트가 완성되었다<br/>
+vuetify프로젝트를 먼저 깔고 시작하니 간단했다!<br/>
 
-- 실행은 잘되나 파일에서 에러나는 부분은 수정
+***
+
+#### 3. typescript 에러수정
+
+로컬실행은 잘되나 파일에서 에러나는 부분은 수정
+
+++내용 추후 업데이트
 
 ***
