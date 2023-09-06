@@ -72,6 +72,6 @@ npm create vuetify
 
 option 선택
 
-![vuetifyOption](../assets/images/posts_img/contents/start_vuetify_project.png)
+![](../assets/images/posts_img/contents/start_vuetify_project.png)
 
 ***
