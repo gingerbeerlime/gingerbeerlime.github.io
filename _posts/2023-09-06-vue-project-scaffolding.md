@@ -60,7 +60,8 @@ vscode, node, vue, vue cli가 설치되어 있어야합니다
 #### 2. Vuetify 프로젝트 생성
 
 🔽 Vuetify3 공식사이트
-[Vuetify Install](https://vuetifyjs.com/en/getting-started/installation/)
+
+[](https://vuetifyjs.com/en/getting-started/installation/)
 
 {% raw %}
 
@@ -72,6 +73,15 @@ npm create vuetify
 
 option 선택
 
-![](../assets/images/posts_img/contents/start_vuetify_project.png)
+![vuetify](../assets/images/posts_img/start_vuetify_project.png)
+
+***
+
+<img src="../assets/images/posts_img/vuetify_project_success.png" width="200px" alt="vuetify project created"></img>
+
+이렇게 하니 vue3, vite, vuetify, typescript, pinia 원하는 옵션들로 프로젝트가 완성되었다
+vuetify프로젝트를 깔고 시작하니 간단했던 vue3프로젝트 세팅
+
+- 실행은 잘되나 파일에서 에러나는 부분은 수정
 
 ***
