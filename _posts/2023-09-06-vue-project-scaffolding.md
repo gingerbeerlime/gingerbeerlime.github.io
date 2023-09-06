@@ -26,7 +26,7 @@ Vue3 기반으로 프로젝트 구조를 새롭게 세팅하기로 했다.<br/>
 
 Vue3 프로젝트 생성 후 Vuetify 설치를 해보았으나 Vuetify component를 가져오지 못했다.<br/>
 여러가지 순서로 시도를 해보았는데<br/>
-바로 Vuetify 프로젝트 생성으로 생성했을 때 내가 원하는 환경 구성이 세팅되었다.
+처음부터 Vuetify 프로젝트로 생성했을 때 내가 원하는 환경 구성이 세팅되었다.
 
 ***
 
@@ -50,18 +50,18 @@ Vue3 프로젝트 생성 후 Vuetify 설치를 해보았으나 Vuetify component
 vscode, node, vue, vue cli가 설치되어 있어야합니다
 
 🔽vscode extention 설치
--Typescript Vue Plugin(Volar)
--Vue3 snippets
--HTML CSS Support
-저는 이 3개를 설치했습니다
 
-(각 extention별 역할 추가)
+- Typescript Vue Plugin(Volar) : Vue에서 TypeSript 지원을 제공하는 공식 VSCode 확장 플러그인
+- Vue3 snippets : 코드 자동 완성
+- HTML CSS Support : css에 정의되어있는 선택자 자동완성
+
+저는 이 3개를 설치했습니다
 
 #### 2. Vuetify 프로젝트 생성
 
 🔽 Vuetify3 공식사이트
 
-[](https://vuetifyjs.com/en/getting-started/installation/)
+[Vuetify3](https://vuetifyjs.com/en/getting-started/installation/)
 
 {% raw %}
 
@@ -73,12 +73,13 @@ npm create vuetify
 
 option 선택
 
-![vuetify](../assets/images/posts_img/start_vuetify_project.png)
+![vuetify](./images/posts_img/start_vuetify_project.png)
 
 ***
 
-<img src="../assets/images/posts_img/vuetify_project_success.png" width="200px" alt="vuetify project created"></img>
+<img src="./images/vuetify_project_success.png" width="200px" alt="vuetify project created"></img>
 
+npm run dev 했을 때 이 화면이 뜨면 성공이다
 이렇게 하니 vue3, vite, vuetify, typescript, pinia 원하는 옵션들로 프로젝트가 완성되었다
 vuetify프로젝트를 깔고 시작하니 간단했던 vue3프로젝트 세팅
 
