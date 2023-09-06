@@ -73,13 +73,12 @@ npm create vuetify
 
 option 선택
 
-![image](https://github.com/gingerbeerlime/gingerbeerlime.github.io/assets/89768065/14da1ee7-4ed7-455c-83c9-528967011276)
+![vuetify옵션선택](https://github.com/gingerbeerlime/gingerbeerlime.github.io/assets/89768065/f09ad55d-d87c-4868-b4df-ea9c4656e947)
 
-)
 
 ***
 
-![vuetify프로젝트로컬실행](https://private-user-images.githubusercontent.com/89768065/265914884-b058d4b4-5d6a-400a-93e8-0e06acf16f3c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTM5ODI0NTUsIm5iZiI6MTY5Mzk4MjE1NSwicGF0aCI6Ii84OTc2ODA2NS8yNjU5MTQ4ODQtYjA1OGQ0YjQtNWQ2YS00MDBhLTkzZTgtMGUwNmFjZjE2ZjNjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzA5MDYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMwOTA2VDA2MzU1NVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTcxOWMxMWU5NjYyZTI1ZTI5ZTM0YjIzYzM1NTcyZDE0OThjYzdiNmQ2ZGE3NjQ5MmM5NWQ5MWMzZDk5M2I1ZjcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.FqGQQpvWQ7JlrtC6REt_GgQrxSDOfCpmg4oRwKIuLsU)
+![vuetify프로젝트로컬실행](https://github.com/gingerbeerlime/gingerbeerlime.github.io/assets/89768065/14da1ee7-4ed7-455c-83c9-528967011276)
 
 npm run dev 했을 때 이 화면이 뜨면 성공이다
 이렇게 하니 vue3, vite, vuetify, typescript, pinia 원하는 옵션들로 프로젝트가 완성되었다
