@@ -61,7 +61,7 @@ vscode, node, vue, vue cli가 설치되어 있어야합니다
 
 🔽 Vuetify3 공식사이트
 
-[Vuetify3](https://vuetifyjs.com/en/getting-started/installation/)
+[Get started with Vuetify 3](https://vuetifyjs.com/en/getting-started/installation/)
 
 {% raw %}
 
@@ -77,7 +77,7 @@ option 선택
 
 ***
 
-<img src="./images/vuetify_project_success.png" width="200px" alt="vuetify project created"></img>
+![vuetify](https://private-user-images.githubusercontent.com/89768065/265913338-a3292fb5-35c9-4058-ab62-7c003cf9ab07.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTM5ODIwNTAsIm5iZiI6MTY5Mzk4MTc1MCwicGF0aCI6Ii84OTc2ODA2NS8yNjU5MTMzMzgtYTMyOTJmYjUtMzVjOS00MDU4LWFiNjItN2MwMDNjZjlhYjA3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzA5MDYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMwOTA2VDA2MjkxMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWY4YTYwZWUyOWM0ZTg0NzA5ODQyYWMyMGVmMTA2NDRmMGZkMzA3NzFkNjVmZjlmZjNjMjFhY2Q3Zjg1M2Y2NTQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.pU-WsFDNItO9ZhAFlRMODC7RSOCM7nkEjKdOaebHhBo)
 
 npm run dev 했을 때 이 화면이 뜨면 성공이다
 이렇게 하니 vue3, vite, vuetify, typescript, pinia 원하는 옵션들로 프로젝트가 완성되었다
