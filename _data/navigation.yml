@@ -20,6 +20,8 @@ main:
 categories:
   - title: "JavaScript"
     url: /categories/javascript/
+  - title: "TypeScript"
+    url: /categories/typescript/
   - title: "HTML"
     url: /categories/html/
   - title: "CSS"
