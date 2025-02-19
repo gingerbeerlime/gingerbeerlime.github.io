@@ -26,7 +26,11 @@ categories:
     url: /categories/html/
   - title: "CSS"
     url: /categories/css/
+  - title: "React"
+    url: /categories/react/
   - title: "Vue"
     url: /categories/vue/
   - title: "AWS"
     url: /categories/aws/
+  - title: "Blog"
+    url: /categories/blog/
