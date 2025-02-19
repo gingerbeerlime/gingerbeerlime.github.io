@@ -3,7 +3,7 @@ title: "변경된 내용이 있을 경우, 컨펌창 띄우기"
 excerpt: "원본 데이터와 수정된 데이터를 비교하는 간단한 방법"
 
 categories:
-  - Error log
+  - Blog
 tags:
   - [vue, vue3, devlog]
 
