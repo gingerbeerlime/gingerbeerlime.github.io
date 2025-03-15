@@ -50,17 +50,17 @@ last_modified_at: 2025-03-15
 
 ```jsx
 function MyButton () {
-	return (
-		<button>I'm a button</button>
-	)
+ return (
+  <button>I'm a button</button>
+ )
 }
 
 export default function MyApp () {
-	return (
-		<div>
-			<MyButton />
-		</div>
-	)
+ return (
+  <div>
+   <MyButton />
+  </div>
+ )
 }
 ```
 
@@ -68,6 +68,8 @@ export default function MyApp () {
 
 - 컴포넌트 이름은 항상 대문자로 시작
 - **Export default** 키워드는 파일의 기본 컴포넌트를 의미
+
+<br/>
 
 ### 2️⃣ 마크업과 스타일을 추가하는 방법
 
@@ -77,48 +79,52 @@ export default function MyApp () {
 
 - 컴포넌트는 여러 개의 JSX태그를 반환할 수 없다. ⇒ <div>…</div> 또는 <>…</> 처럼 래퍼로 감싸 최상위 태그를 하나만 둬야한다.
 
+<br/>
+
 ### 3️⃣ 데이터를 표시하는 방법
 
 - 중괄호 { } 를 사용해 마크업, jsx 속성, style에 데이터 연결
 
 ```jsx
 return (
-	<div>
-		<h1>{user.name}</h1>
-		<img
-			src={user.imageUrl}
-			alt={'Photo of ' + user.name}
-			style={{
-				width: user.imageSize,
-				height: user.imageSize
-			}}
-		/>
-	</div>
+ <div>
+  <h1>{user.name}</h1>
+  <img
+   src={user.imageUrl}
+   alt={'Photo of ' + user.name}
+   style={{
+    width: user.imageSize,
+    height: user.imageSize
+   }}
+  />
+ </div>
 )
 ```
 
+<br/>
+
 ### 4️⃣ 조건과 리스트를 렌더링하는 방법
 
-### 조건부 렌더링
+#### 조건부 렌더링
 
 - if 문 사용
 - 조건부 삼항 연산자, && 연산자 사용 ⇒ jsx에서 사용
 
----
+***
 
-### 리스트 렌더링
+#### 리스트 렌더링
 
 - for문 또는 map()함수 사용
 
 ```jsx
 const listItems = products.map(product =>
-	<li key={product.id}>
-		{product.title}
-	</li>
+ <li key={product.id}>
+  {product.title}
+ </li>
 )
 
 return (
-	<ul>{listItems}</ul>
+ <ul>{listItems}</ul>
 )
 ```
 
@@ -128,19 +134,21 @@ return (
 - key는 리액트가 각 컴포넌트를 구별할 수 있게 하여 컴포넌트가 다시 렌더링될 때 리액트가 해당 컴포넌트의 state를 유지할 수 있게 함. 컴포넌트의 key가 변하면 컴포넌트는 제거되고 새로운 state와 함께 다시 생성됨.
 - key는 해당 컴포넌트의 형제 컴포넌트 사이에서 고유해야 함.
 
+<br/>
+
 ### 5️⃣ 이벤트에 응답하고 화면을 업데이트 하는 방법
 
-### 이벤트 핸들러 함수
+#### 이벤트 핸들러 함수
 
 ```jsx
 function MyButton() {
-	function handleClick() {
-		alert('click!')
-	}
-	
-	return (
-		<button onClick={handleClick}></button>
-	)
+ function handleClick() {
+  alert('click!')
+ }
+ 
+ return (
+  <button onClick={handleClick}></button>
+ )
 }
 ```
 
@@ -156,7 +164,7 @@ function MyButton() {
     - handleClick이 state값을 업데이트하는 로직을 실행시키는 경우 재렌더링되는데 그 때 다시 handleClick(0)이 실행되며 무한 루프에 빠지게 됨
 - onClick={() ⇒ handleClick(0)} props로 함수를 전달하되, 클릭 이벤트시 handleClick(0)이 실행되도록 함
 
----
+***
 
 ### 화면 업데이트(useState)
 
@@ -166,7 +174,7 @@ function MyButton() {
 import { useState } from 'react';
 
 function MyButton() {
-	const [count, setCount] = useState(0);
+ const [count, setCount] = useState(0);
 }
 ```
 
