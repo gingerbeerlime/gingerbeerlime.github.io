@@ -275,7 +275,7 @@ export default function Game() {
 > **리액트의 불변성**<br>
 리액트에서 불변성을 유지하는 것은 상태 관리의 핵심 원칙이다.<br>
 리액트는 상태의 변경을 감지할 때, 객체나 배열의 참조를 비교하는데 원본 배열을 직접 변경하게 되면 참조가 동일하게 유지되어 리액트가 변경을 인식하지 못할 수 있다.
-<br>
+
 <br>
 
 #### 4️⃣ 보드판이 업데이트되면 승부 확인
@@ -463,3 +463,122 @@ export default function Game () {
 
 ```
 state값을 업데이트할 때 이전 값을 변경하지 않지 않고 새로운 배열을 만들기 떄문에 게임의 히스토리를 관리하기가 용이해졌다. `history`라는 state값에 게임 매 회차의 상태를 누적하고 `currentMove` 값을 이용해 현재 상태를 보여주고 과거의 상태로 돌리는 기능까지 구현할 수 있다.
+
+#### ✅ 리팩토링
+
+- 컴포넌트 분리(Card, Board, Game)
+- 시간여행 구현(Game 컴포넌트)
+- 승부 계산 함수 분리 및 로직 변경(checkIfWin)
+
+```jsx
+import { useState, useEffect } from 'react';
+
+export function Card ({ id, holder, onCardClick }) {
+  return (
+    <button className="square" onClick={() => onCardClick(id)}>
+      { holder }
+    </button>
+  )
+}
+
+export function Board({ cards, onPlay, winner, player }) {
+  const updateCardHolder = (id) => {
+    const nextCards = cards.map(card => {
+      return card.id === id ? {...card, holder: player} : card
+    })
+    onPlay(nextCards);
+  }
+
+  const handleClick = (id) => {
+    if (!cards.find(card => card.id === id).holder && !winner) {
+      updateCardHolder (id);
+    }
+  }
+
+  return (
+    <>
+      <div className="board">
+        { 
+          cards.map(card => {
+            return <Card key={card.id} id={card.id} holder={card.holder} onCardClick={handleClick} />
+          })
+        }
+      </div>
+      <p>Next player: {player}</p>
+      <p>Winner: { winner ? winner : '-' }</p>
+    </>
+  )
+}
+
+export default function Game () {
+  const [winner, setWinner] = useState(null);
+  const [history, setHistory] = useState([
+    Array.from({ length: 9 }, (_, index) => ({ id: index, holder: null }))
+  ]);
+  const [currentMove, setCurrentMove] = useState(0);
+  
+  const nextPlayer = currentMove % 2 === 0 ? 'X' : 'O';
+  const currentCards = history[currentMove];
+
+  useEffect(() => {
+    if (!winner) {
+      const newWinner = checkIfWin(currentCards);
+      if (newWinner) setWinner(newWinner);
+    }
+  }, [history])
+
+  const handlePlay = (nextCards) => {
+    const nextHistory = [...history.slice(0, currentMove + 1), nextCards];
+    setHistory(nextHistory);
+    setCurrentMove(nextHistory.length - 1);
+  }
+
+  const jumpTo = (nextMove) => {
+    setCurrentMove(nextMove);
+    if (nextMove !== currentMove) setWinner(null);
+  }
+
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board cards={currentCards} onPlay={handlePlay} winner={winner} player={nextPlayer}/>
+      </div>
+      <div className="game-info">
+        <ol>
+          {
+            history.map((cards, move) => {
+              return (
+                <li key={move}>
+                  <button onClick={() => jumpTo(move)}>{ move > 0 ? ('Go to move #' + move) : 'Go to game start'}</button>
+                </li>
+              )
+            })
+          }
+        </ol>
+      </div>
+    </div>
+  )
+}
+
+const checkIfWin = (cards) => {
+  const winningCases = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ]
+
+  for (let caseSet of winningCases) {
+    const [a, b, c] = caseSet;
+    if (cards[a].holder && cards[a].holder === cards[b].holder && cards[a].holder === cards[c].holder) {
+      return cards[a].holder
+    }
+  }
+  return null;
+}
+
+```
