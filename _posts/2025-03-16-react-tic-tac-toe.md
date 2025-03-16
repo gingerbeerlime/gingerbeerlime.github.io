@@ -32,25 +32,21 @@ last_modified_at: 2025-03-16
 
 ---
 
-## 리액트 핵심 개념
+## 🎮 튜토리얼: 틱택토 게임
 
-- 리액트 컴포넌트
-- JSX
-- 조건부 렌더링
-- 리스트 렌더링
-- useState
+2명의 플레이어가 번갈아가며 3x3 격자에 자신의 표시(X/O)를 놓고, 가로, 세로 또는 대각선으로 3개를 연속으로 배열하는 사람이 승리하는 게임
+
+✅ 구현해야하는 기능
+- 3x3격자의 보드판 마크업
+- 보드판의 칸을 클릭할 때 클릭한 플레이어('X', 'O')가 표시되어야함
+- 클릭시 승부를 확인해야하며, 승부가 나지 않은 경우에는 다음 플레이어로 전환
+- 승부가 나면 게임 진행을 멈추고 승자를 표시
 
 [리액트v19 공식문서-틱택토 게임](https://ko.react.dev/learn/tutorial-tic-tac-toe)
 
 ***
 
-### 🎮 튜토리얼: 틱택토 게임
-
-2명의 플레이어가 번갈아가며 3x3 격자에 자신의 표시(X/O)를 놓고, 가로, 세로 또는 대각선으로 3개를 연속으로 배열하는 사람이 승리하는 게임
-
-***
-
-✅ 리액트 애플리케이션 기본 구조
+### ✅ 리액트 애플리케이션 기본 구조
 
 `index.js` 앱을 시작하고 <App />을 root에 마운트
 
@@ -146,6 +142,27 @@ export default function Game() {
 }
 
 ```
+```css
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 34px);
+}
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+```
+<br>
 
 #### 2️⃣ 플레이어 상태 선언(X와 O)
 
@@ -193,10 +210,12 @@ export default function Game() {
 
 ```
 
+<br>
+
 #### 3️⃣ 이벤트 핸들러 연결
 
 1. 카드 클릭 이벤트 연결 onClick={() ⇒ handleClick(card.id)}
-    1. onClick={handleClick(card.id)} 로 사용할 수 없음, 클릭시 이벤트가 발생하는게 아니고 바로 호출되어서 무한 루프 발생
+    - onClick={handleClick(card.id)} 로 사용할 수 없음, 클릭시 이벤트가 발생하는게 아니고 바로 호출되어서 무한 루프 발생
 2. handleClick 함수에서 클릭한 카드의 holder가 null인 경우에만 카드 소유자를 업데이트하는 함수(updateCardHolder) 실행
 3. updateCardHolder에서 prevCards 이전 상태를 받아와 map()함수를 통해 새로운 배열을 업데이트
 
@@ -255,8 +274,8 @@ export default function Game() {
 
 > **리액트의 불변성**<br>
 리액트에서 불변성을 유지하는 것은 상태 관리의 핵심 원칙이다.<br>
-<br>
 리액트는 상태의 변경을 감지할 때, 객체나 배열의 참조를 비교하는데 원본 배열을 직접 변경하게 되면 참조가 동일하게 유지되어 리액트가 변경을 인식하지 못할 수 있다.
+<br>
 <br>
 
 #### 4️⃣ 보드판이 업데이트되면 승부 확인
@@ -268,13 +287,9 @@ export default function Game() {
     2. 승자가 없으면 setPlayer 다음 차례로 이동
 4. cards 상태값이 변경되면 승부를 확인하는 checkIfWin 함수 실행(useEffect)
 
-> **리액트의 불변성**<br>
-리액트에서 불변성을 유지하는 것은 상태 관리의 핵심 원칙이다.<br>
-<br>
-리액트는 상태의 변경을 감지할 때, 객체나 배열의 참조를 비교하는데 원본 배열을 직접 변경하게 되면 참조가 동일하게 유지되어 리액트가 변경을 인식하지 못할 수 있다.
-<br>
-
 >🚫setState 함수는 기본적으로 비동기로 실행되며 Promise를 반환하지 않기 때문에 await와 함께 쓸 수 없다. state 값이 변경되고 실행시킬 로직이 있을 때는 useEffect나 함수형 업데이트를 이용해야한다.
+
+<br>
 <br>
 
 ```jsx
@@ -382,8 +397,10 @@ export default function Game () {
 ```
 
 하나의 사각형 칸을 나타내는 Square 컴포넌트, 여러 Square가 모인 보드판을 렌더링하는 Board 컴포넌트, 전체적인 게임 상태와 히스토리를 관리하는 Game 컴포넌트로 분리하여 게임의 계층적인 구조를 명확하게 표현했다.
+<br>
+<br>
 
-#### ✅ 시간 여행 구현 - 히스토리 관리
+#### ✅ 원본 데이터 불변성 유지
 
 ```jsx
 function Board({ xIsNext, squares, onPlay }) {
@@ -414,7 +431,11 @@ function Board({ xIsNext, squares, onPlay }) {
 }
 ```
 
-slice()함수를 사용해 매 이동마다 squares 배열의 새 복사본을 만들어 업데이트함으로써 불변성을 유지하기 때문에 history를 관리하기 쉽다.
+slice()함수를 사용해 매 이동마다 squares 배열의 새 복사본 `nextSquares`을 만들어 업데이트함으로써 원본 데이터의 불변성을 유지한다.
+<br>
+<br>
+
+#### ✅ 시간 여행 기능 - 히스토리 관리
 
 ```jsx
 export default function Game () {
@@ -441,3 +462,4 @@ export default function Game () {
     </div>
 
 ```
+state값을 업데이트할 때 이전 값을 변경하지 않지 않고 새로운 배열을 만들기 떄문에 게임의 히스토리를 관리하기가 용이해졌다. `history`라는 state값에 게임 매 회차의 상태를 누적하고 `currentMove` 값을 이용해 현재 상태를 보여주고 과거의 상태로 돌리는 기능까지 구현할 수 있다.
