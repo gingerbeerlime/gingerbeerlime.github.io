@@ -44,7 +44,7 @@ last_modified_at: 2025-03-23
 
 🥑 냉장고 재료 관리 테이블
 
-![컴포넌트 구조](/assets/images/posts_img/react-thinking-in-react/thinking-in-react-component-tree.png)
+<img src="/assets/images/posts_img/react-thinking-in-react/thinking-in-react-component-tree.png" width="300"/>
 
 ```bash
 FilterableStockList
@@ -191,6 +191,5 @@ const SearchBar: React.FC<SearchBarProps> = ({
 export default SearchBar
 ```
 
-![output](/assets/images/posts_img/react-thinking-in-react/thinking-in-react-stock-only.png)
-
-![output](/assets/images/posts_img/react-thinking-in-react/thinking-in-react-search.png)
+<img src="/assets/images/posts_img/react-thinking-in-react/thinking-in-react-stock-only.png" width="300"/>
+<img src="/assets/images/posts_img/react-thinking-in-react/thinking-in-react-search.png" width="300"/>
