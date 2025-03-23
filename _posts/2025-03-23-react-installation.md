@@ -70,22 +70,17 @@ last_modified_at: 2025-03-23
 
 ### 2️⃣ 프로젝트 세팅
 
-<aside>
-📌
+> 📌**react + vite + typescript 프로젝트 셋업하기**<br>
+> 스타일 & ui 관련 tailwind css + shadcn/ui
+> eslint & prettier 설정
 
-**react + vite + typescript 프로젝트 셋업하기**
-
-- - 스타일 & ui 관련 tailwind css + shadcn/ui
-- - eslint & prettier 설정
-  </aside>
-
-🙇‍♀️ 참고
+`참고`
 
 [https://velog.io/@odada/React-Vite-TypeScript-Tailwind-shadcnui-프로젝트-셋업-가이드](https://velog.io/@odada/React-Vite-TypeScript-Tailwind-shadcnui-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%85%8B%EC%97%85-%EA%B0%80%EC%9D%B4%EB%93%9C)
-
 https://ui.shadcn.com/docs/installation/vite
-
 https://shawnkim.tistory.com/132
+
+<br>
 
 #### (1) React + Vite 프로젝트 생성
 
@@ -95,13 +90,13 @@ cd my-app
 npm install
 ```
 
-![image.png](../assets/images/posts_img/attachment/react-vite-project-init.png)
+![리액트 비트 프로젝트 생성](../assets/images/posts_img/2025-03-23-react-installation/react-vite-project-init.png)
 
 <br>
 
 #### (2) tailwind CSS 설치 및 설정(에러 해결)
 
-- 에러 발생 + 해결
+- 에러 발생 + 해결<br>
   ⚠️ 2025/01/22 tailwindcss가 최신 버전이 4버전 방식으로 바뀌어 현재 이 방식은 에러 발생
 
   ```bash
@@ -143,6 +138,7 @@ npm install
 
   ❗️tailwind 설정 파일 생성 명령에서 에러 발생
   ⇒ 이유 3버전에서 4버전으로 업그레이드 되면서 ./nodemodules/.bin에 tailwindcss 파일이 없어짐
+  <br>
   🔅해결1) 3버전으로 명시해서 설치
 
   ```bash
@@ -152,7 +148,11 @@ npm install
 
   🔅해결2) 최신 4버전으로 설치
 
-  - 4버전 설치 방식 https://tailwindcss.com/docs/installation/using-vite
+  - 4버전 설치 방식 (https://tailwindcss.com/docs/installation/using-vite)
+
+---
+
+#### (2-1) tailwind CSS v4 설치
 
 `tailwindcss v4.0 설치`
 
@@ -249,13 +249,13 @@ npx shadcn@latest add button
 
 ⇒ @/components/ui 폴더에 저장됨
 
-![image.png](../assets/images/posts_img/attachment/react-installation-shadcn-test.png)
+![shadcn button component](../assets/images/posts_img/2025-03-23-react-installation/react-installation-shadcn-test.png)
 
 <br>
 
 #### **(4) ESLint + Prettier 설정**
 
-`참고` https://shawnkim.tistory.com/132
+`참고` (https://shawnkim.tistory.com/132)
 
 **ESLint?** 코드의 품질을 검사해주는 도구
 

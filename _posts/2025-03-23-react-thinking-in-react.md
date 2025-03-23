@@ -44,14 +44,14 @@ last_modified_at: 2025-03-23
 
 🥑 냉장고 재료 관리 테이블
 
-![thinking-in-react-components-tree.png](../assets/images/posts_img/attachment/thinking-in-react-component-tree.png)
+![컴포넌트 구조](../assets/images/posts_img/2025-03-23-react-thinking-in-react/thinking-in-react-component-tree.png)
 
-```json
+```bash
 FilterableStockList
 └── SearchBar // 검색, 필터링 기능
 └── StockList // 필터링된 재료 리스트가 보여지는 뷰
     └── ItemTable // 카테고리별(음료, 야채, 단백질 등) 테이블
-  └── ItemRow // 아이템 별 Row 컴포넌트
+    └── ItemRow // 아이템 별 Row 컴포넌트
 ```
 
 <br>
@@ -64,7 +64,7 @@ FilterableStockList
   - 컴포넌트를 명확히 분리하고 리스트 렌더링같은 경우 간결하고 명확하게 코드를 짜는 것 연습 필요함
 - 각 컴포넌트에서 필요한 데이터 생각해보기
 
-```json
+```bash
 FilterableStockList // 전체 재료 목록
 └── SearchBar // 검색 입력값, 체크 여부
 └── StockList // 필터링된 재료 목록
@@ -95,10 +95,9 @@ filteredItems(필터링된 리스트)
 ```
 
 > 📖**Props vs State**<br/><br/>
-
-- 리액트는 props와 state라는 두 개의 데이터 ‘모델’이 존재한다.<br>
-- props는 함수를 통해 전달되는 인자 같은 성격을 가진다.<br>
-- state는 컴포넌트의 메모리 같은 성격을 가진다.<br>
+> 리액트는 props와 state라는 두 개의 데이터 ‘모델’이 존재한다.<br>
+> props는 함수를 통해 전달되는 인자 같은 성격을 가진다.<br>
+> state는 컴포넌트의 메모리 같은 성격을 가진다.<br>
 
 <br>
 
@@ -192,6 +191,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
 export default SearchBar
 ```
 
-![image.png](../assets/images/posts_img/attachment/thinking-in-react-stock-only.png)
+![재고 있는 것만 보기](../assets/images/posts_img/2025-03-23-react-thinking-in-react/thinking-in-react-stock-only.png)
 
-![image.png](../assets/images/posts_img/attachment/thinking-in-react-search.png)
+![검색시](../assets/images/posts_img/2025-03-23-react-thinking-in-react/thinking-in-react-search.png)
