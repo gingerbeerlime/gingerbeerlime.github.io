@@ -94,11 +94,11 @@ filteredItems(필터링된 리스트)
 => State 아님
 ```
 
-> 📖Props vs State<br>
+> 📖**Props vs State**<br/><br/>
 
-- 리액트는 props와 state라는 두 개의 데이터 ‘모델’이 존재한다.
-- props는 함수를 통해 전달되는 인자 같은 성격을 가진다.
-- state는 컴포넌트의 메모리 같은 성격을 가진다.
+- 리액트는 props와 state라는 두 개의 데이터 ‘모델’이 존재한다.<br>
+- props는 함수를 통해 전달되는 인자 같은 성격을 가진다.<br>
+- state는 컴포넌트의 메모리 같은 성격을 가진다.<br>
 
 <br>
 

@@ -9,7 +9,7 @@ categories:
 tags:
   - [react, react19, react component, jsx]
 
-permalink: /categories/react/thinking-in-react/
+permalink: /categories/react/installation/
 
 toc: true
 
