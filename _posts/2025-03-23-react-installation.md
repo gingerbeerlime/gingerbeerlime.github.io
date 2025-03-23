@@ -71,7 +71,7 @@ last_modified_at: 2025-03-23
 ### 2️⃣ 프로젝트 세팅
 
 > 📌**react + vite + typescript 프로젝트 셋업하기**<br>
-> 스타일 & ui 관련 tailwind css + shadcn/ui
+> 스타일 & ui 관련 tailwind css + shadcn/ui<br>
 > eslint & prettier 설정
 
 `참고`
@@ -90,7 +90,7 @@ cd my-app
 npm install
 ```
 
-![리액트 비트 프로젝트 생성](../assets/images/posts_img/2025-03-23-react-installation/react-vite-project-init.png)
+![output](../assets/images/posts_img/react-installation/react-vite-project-init.png)
 
 <br>
 
@@ -249,7 +249,7 @@ npx shadcn@latest add button
 
 ⇒ @/components/ui 폴더에 저장됨
 
-![shadcn button component](../assets/images/posts_img/2025-03-23-react-installation/react-installation-shadcn-test.png)
+![output](../assets/images/posts_img/react-installation/react-installation-shadcn-test.png)
 
 <br>
 
