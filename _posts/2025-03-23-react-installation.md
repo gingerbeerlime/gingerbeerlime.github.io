@@ -90,7 +90,7 @@ cd my-app
 npm install
 ```
 
-![output](/assets/images/posts_img/react-installation/react-vite-project-init.png)
+<img src="/assets/images/posts_img/react-installation/react-vite-project-init.png" width="300"/>
 
 <br>
 
@@ -249,7 +249,7 @@ npx shadcn@latest add button
 
 ⇒ @/components/ui 폴더에 저장됨
 
-![output](/assets/images/posts_img/react-installation/react-installation-shadcn-test.png)
+<img src="/assets/images/posts_img/react-installation/react-installation-shadcn-test.png" width="300"/>
 
 <br>
 
