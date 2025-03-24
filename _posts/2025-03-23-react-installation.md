@@ -71,14 +71,15 @@ last_modified_at: 2025-03-23
 ### 2️⃣ 프로젝트 세팅
 
 > 📌**react + vite + typescript 프로젝트 셋업하기**<br>
-> 스타일 & ui 관련 tailwind css + shadcn/ui<br>
-> eslint & prettier 설정
+>
+> - 스타일 & ui 관련 **tailwind css + shadcn/ui**<br>
+> - **eslint & prettier** 설정
 
 `참고`
 
 [https://velog.io/@odada/React-Vite-TypeScript-Tailwind-shadcnui-프로젝트-셋업-가이드](https://velog.io/@odada/React-Vite-TypeScript-Tailwind-shadcnui-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%85%8B%EC%97%85-%EA%B0%80%EC%9D%B4%EB%93%9C)
 https://ui.shadcn.com/docs/installation/vite
-https://shawnkim.tistory.com/132
+[shadcn 설치(vite용)](https://shawnkim.tistory.com/132)
 
 <br>
 
@@ -148,7 +149,7 @@ npm install
 
   🔅해결2) 최신 4버전으로 설치
 
-  - 4버전 설치 방식 (https://tailwindcss.com/docs/installation/using-vite)
+  - [4버전 설치 방식]https://tailwindcss.com/docs/installation/using-vite
 
 ---
 
@@ -255,7 +256,7 @@ npx shadcn@latest add button
 
 #### **(4) ESLint + Prettier 설정**
 
-`참고` (https://shawnkim.tistory.com/132)
+`참고` https://shawnkim.tistory.com/132
 
 **ESLint?** 코드의 품질을 검사해주는 도구
 

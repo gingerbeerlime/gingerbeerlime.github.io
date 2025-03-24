@@ -40,10 +40,10 @@ last_modified_at: 2025-03-23
   - 너무 많은 작업을 수행하는 컴포넌트는 더 작은 컴포넌트로 나눔
   - 주요 컴포넌트 기능과 관련 없는 코드를 별도의 유틸리티 함수로 추출
   - 관련 있는 기능들을 커스텀 Hook으로 캡슐화
+- **컴포넌트의 재활용성** 고려하기
 - 컴포넌트를 나누고 계층 구조로 정리해보기
 
-🥑 냉장고 재료 관리 테이블
-
+🥑 **냉장고 재료 관리 테이블**
 <img src="/assets/images/posts_img/react-thinking-in-react/thinking-in-react-component-tree.png" width="300"/>
 
 ```bash
@@ -94,7 +94,7 @@ filteredItems(필터링된 리스트)
 => State 아님
 ```
 
-> 📖**Props vs State**<br/><br/>
+> 📖**Props vs State**<br/>
 > 리액트는 props와 state라는 두 개의 데이터 ‘모델’이 존재한다.<br>
 > props는 함수를 통해 전달되는 인자 같은 성격을 가진다.<br>
 > state는 컴포넌트의 메모리 같은 성격을 가진다.<br>
@@ -103,7 +103,7 @@ filteredItems(필터링된 리스트)
 
 ### 4️⃣ State가 어디에 있어야 할 지 정하기
 
-✔리액트는 항상 컴포넌트 계층 구조를 따라 부모에서 자식으로 데이터를 전달하는 단방향 데이터 흐름을 사용한다.
+리액트는 항상 컴포넌트 계층 구조를 따라 부모에서 자식으로 데이터를 전달하는 **단방향 데이터 흐름**을 사용한다.
 
 1. state값을 사용하는 컴포넌트 모두 찾기 ⇒ `SearchBar` `StockList`
 2. 대상 컴포넌트의 공통 부모 찾기 ⇒ `FilterableStockList`
@@ -113,7 +113,7 @@ filteredItems(필터링된 리스트)
 
 ### 5️⃣ 역 데이터 흐름 추가하기
 
-자식 컴포넌트에서 이벤트(ex. 사용자 입력)에 따라 state를 변경하려면 반대 방향의 데이터 흐름을 만들어야 한다. ⇒ state값을 관리하는 부모 컴포넌트로 부터 setState함수를 전달받아 이벤트 핸들러에 연결한다.
+자식 컴포넌트에서 이벤트(ex. 사용자 입력)에 따라 state를 변경하려면 반대 방향의 데이터 흐름을 만들어야 한다. ⇒ state값을 관리하는 부모 컴포넌트로 부터 setState함수를 전달받아 이벤트 핸들러에 연결한다.(실제로 데이터가 역방향으로 이동하는건 아님,, 부모로부터 state를 업데이트하는 함수를 받아 업데이트할 뿐)
 
 - state 값을 업데이트하는 `onFilterTextChange`, `onInStockOnlyChange` 함수를 `SearchBar` 컴포넌트 에 props로 전달
 
