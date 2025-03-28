@@ -9,7 +9,7 @@ categories:
 tags:
   - [react, react19, eslint, prettier, typescript, compiler]
 
-permalink: /categories/react/setup/
+permalink: /categories/react/set-up/
 
 toc: true
 
@@ -18,6 +18,12 @@ toc_sticky: true
 date: 2025-03-30
 
 last_modified_at: 2025-03-30
+---
+
+## 리액트 설정하기
+
+[리액트v19 공식문서-설정하기](https://ko.react.dev/learn/setup)
+
 ---
 
 ## 1️⃣ 에디터 설정하기
