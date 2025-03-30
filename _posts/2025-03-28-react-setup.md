@@ -1,5 +1,5 @@
 ---
-title: "React 개발환경 설정하기: 에디터 기능, 타입스크립트, 리액트 컴파일러"
+title: "React 개발환경 설정하기: 린팅, 포맷팅, 타입스크립트, 리액트 컴파일러"
 
 excerpt: "React 공식문서 읽기 스터디(3주차)-리액트 환경설정"
 
@@ -17,12 +17,18 @@ toc_sticky: true
 
 date: 2025-03-28
 
-last_modified_at: 2025-03-28
+last_modified_at: 2025-03-30
 ---
 
 ## 리액트 설정하기
 
-[리액트v19 공식문서-설정하기](https://ko.react.dev/learn/setup)
+리액트 개발환경 설정하기
+
+- 에디터 기능 - 린팅 & 포맷팅
+- 리액트에서 타입스크립트 사용하기
+- 리액트 컴파일러 사용하기
+
+[리액트v19 공식문서-설정하기] <https://ko.react.dev/learn/setup>
 
 ---
 
@@ -37,19 +43,19 @@ last_modified_at: 2025-03-28
 
 ### 에디터 기능 - Linting & Formatting
 
-1. 린팅(ESLint)
+✅ **린팅(ESLint)**
+
+**ESLint?** 코드의 품질을 검사해주는 도구<br>
 
 `eslint-config-react-app`
 
-Create React App 에서 기본적으로 적용하는 ESLint 규칙 모음
-
-React 관련 권장 설정 포함 (eslint-plugin-react, eslint-plugin-react-hooks)
-
+- Create React App 에서 기본적으로 적용하는 ESLint 규칙 모음
+- React 관련 권장 설정 포함 (eslint-plugin-react, eslint-plugin-react-hooks, eslint-plugin-jsx-a11y)
 - 꼭 eslint-config-react-app 이 아닌 airbnb, standard, prettier 등의 설정하거나 .eslintrc.json 을 직접 커스텀해서 프로젝트에 맞는 룰을 설정할 수 있다.
 
 `eslint-plugin-react-hooks`
 
-React Hooks의 올바른 사용을 보장하는 ESLint 플러그인으로 **리액트 프로젝트에서 필수적**이다. `useState`, `useEffect`, `useMemo` 와 같은 Hooks를 사용할 때 잘못된 사용 패턴을 감지하고 경고해준다.
+- React Hooks의 올바른 사용을 보장하는 ESLint 플러그인으로 **리액트 프로젝트에서 필수적**이다. `useState`, `useEffect`, `useMemo` 와 같은 Hooks를 사용할 때 잘못된 사용 패턴을 감지하고 경고해준다.
 
 - rules-of-hooks
   - Hooks는 반드시 컴포넌트 최상위에서 호출해야한다.
@@ -57,13 +63,122 @@ React Hooks의 올바른 사용을 보장하는 ESLint 플러그인으로 **리�
 - exhaustive-deps
   - useEffect, useCallback, useMemo의 의존성 배열이 올바르게 설정되어있는지 검사
 
-1. **포매팅(Prettier)**
+✅ **포매팅(Prettier)**
+
+**Prettier?** 설정한 규칙에 맞게 코드를 포맷팅 해주는 도구<br>
 
 - 저장 시점에 포매팅하기
   설정에서 기본 포매터가 **prettier - code formatter** 로 설정되어있는지 확인
   ⇒ 설정에서 **format on save** 옵션 활성화
 - `eslint-config-prettier`
   ESLint 규칙과 Prettier 규칙의 충돌 방지를 위해 ESLint 프리셋의 모든 포매팅 규칙을 비활성화하고 Prettier 규칙을 우선시한다.
+
+✅ **React + Vite + Typescript 프로젝트에서 ESLint & Prettier 설정하기**
+
+- Vite기반 프로젝트를 생성할 때 기본적으로 ESLint도 같이 포합되어 설치되기 때문에 따로 설치할 필요 없음
+  - eslint, eslint-plugin-react-hooks, eslint-plugin-react-refresh, typescript-eslint 포함
+
+```json
+{
+  "name": "my-app-setup",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.2.0"
+  }
+}
+```
+
+- prettier 설치
+
+```bash
+npm install --save-dev --save-exact prettier
+```
+
+- `eslint-config-prettier` 설치
+
+```bash
+npm install --save-dev eslint-config-prettier
+```
+
+- ESLint에서 Prettier와 충돌할 수 있는 규칙을 무시함으로써 포맷팅할 때 Prettier의 규칙이 우선시 하도록함.
+- Prettier가 ESLint처럼 오류를 출력해 주는 하게 하고 싶으면 `eslint-puglin-prettier` 라이브러리를 같이 사용할 수 있다.
+
+  ```bash
+  npm install --save-dev eslint-plugin-prettier
+  ```
+
+- 프로젝트 루트에 `.prettierrc` 파일 생성 및 규칙 추가
+
+```json
+{
+  "semi": false,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "printWidth": 100
+}
+```
+
+- `eslint.config.js` prettier 플러그인 활성화
+
+```jsx
+import js from "@eslint/js";
+import globals from "globals";
+import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
+import tseslint from "typescript-eslint";
+import prettier from "eslint-plugin-prettier";
+
+export default tseslint.config(
+  { ignores: ["dist"] },
+  {
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      "plugin:prettier/recommended", // Prettier 설정 추가
+    ],
+    files: ["**/*.{ts,tsx}"],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    plugins: {
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
+      prettier, // Prettier 플러그인 추가
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
+      "prettier/prettier": "warn", // Prettier 룰 적용
+    },
+  }
+);
+```
 
 ---
 
@@ -85,10 +200,10 @@ npm install @types/react @types/react-dom
 
   - dom은 lib에 포함되어야함(기본값, 별도로 지정X)
   - jsx를 유효한 옵션 중 하나로 설정
+    <br>
 
 - React + Vite + Typescript 프로젝트 설정
-
-`tsconfig.json` 기본 설정 및 공통 설정 관리
+  `tsconfig.json` 기본 설정 및 공통 설정 관리
 
 ```json
 {
@@ -166,7 +281,7 @@ npm install @types/react @types/react-dom
 }
 ```
 
-> **tsconfig.json + tsconfig.app.json + tsconfig.node.json** 구조의 장점<br>
+> **📌tsconfig.json + tsconfig.app.json + tsconfig.node.json** 구조의 장점<br>
 >
 > - 다양한 빌드 환경 지원
 >   - tsconfig.app.json → React 클라이언트 코드 전용
@@ -180,11 +295,9 @@ npm install @types/react @types/react-dom
 
 <br>
 
-### 리액트 컴포넌트에서 타입스크립트 사용하기
+### ✅리액트 컴포넌트에서 타입스크립트 사용하기
 
 - jsx를 포함하는 모든 파일은 `.tsx` 파일 확장자 사용
-
-<br>
 
 #### props
 
@@ -251,12 +364,14 @@ function MyButton({ title, disabled }: MyButtonProps) {
   }
   ```
 
-> 📌 interface는 객체 타입 정의에 적합
+> 📌 **interface**는 객체 타입 정의에 적합
 >
 > - 객체의 구조를 정의하는데 주로 사용
 > - 확장(extends)가능 → 기존 타입을 확장해서 사용 가능
 > - 중복 선언 가능(같은 이름의 interface를 여러번 선언하면 병합됨)
->   type은 더 유연하게 사용 가능
+>
+> **type**은 더 유연하게 사용 가능
+>
 > - 객체 뿐 아니라 유니온 타입, 튜플, 기본 타입 등 다양한 형태로 정의 가능
 > - 확장이 필요하지 않은 경우 주로 사용
 
@@ -296,6 +411,29 @@ function MyButton({ title, disabled }: MyButtonProps) {
 
 #### DOM 이벤트
 
+```jsx
+import { useState } from "react";
+
+export default function Form() {
+  const [value, setValue] = useState("Change me");
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setValue(event.currentTarget.value);
+  }
+
+  return (
+    <>
+      <input value={value} onChange={handleChange} />
+      <p>Value: {value}</p>
+    </>
+  );
+}
+```
+
+- onChange = (event) => handleCange(event.currentTarget.value) 로 작성하면 onChange 내부의 event는 TypeScript가 자동으로 React.ChangeEvent<HTMLInputElement> 타입으로 추론한다.
+- handleChange를 별도의 함수로 분리하면 TypeScript가 event의 타입을 추론하지 못하기 때문에,
+  React.ChangeEvent<HTMLInputElement>를 명시적으로 지정해야 한다.
+
 #### Children
 
 - `React.ReactNode` : jsx에서 자식으로 전달할 수 있는 모든 가능한 타입의 조합
@@ -318,10 +456,10 @@ function MyButton({ title, disabled }: MyButtonProps) {
 
 ### 리액트 컴파일러의 주요 기능
 
-- 리렌더링 최적화
+- **리렌더링 최적화**
   - 부모 컴포넌트만 변경되었음에도 컴포넌트 트리 내 여러 컴포넌트가 리렌더링 되는 경우
   - ⇒ 상태 변경 시 앱에서 관련된 부분만 리렌더링되도록 자동으로 적용
-- 리액트 외부에서 비용이 많이 드는 계산 건너뛰기
+- **리액트 외부에서 비용이 많이 드는 계산 건너뛰기**
   - `주의` **리액트 컴포넌트와 Hook만 메모제이션** 하며, 모든 함수를 메모제이션 하지 않음
   - 리액트 컴파일러의 메모제이션은 여러 컴포넌트와 Hook사이에서 공유되지 않음
 
@@ -333,6 +471,7 @@ function MyButton({ title, disabled }: MyButtonProps) {
 npm install -D babel-plugin-react-compiler@beta eslint-plugin-react-compiler@beta
 ```
 
+<br>
 - ESLint 설정 `eslint.config.js`
 
 에디터에서 리액트 규칙 위반 사항 표시
@@ -352,6 +491,7 @@ export default [
 ];
 ```
 
+<br>
 - Babel 설정(Vite 프로젝트) `vite.config.js`
 
 ```jsx
@@ -378,9 +518,11 @@ export default defineConfig({
 });
 ```
 
-- 코드베이스에 컴파일러 적용하기
+<br>
 
-일부 디렉토리에만 컴파일러 실행해보기
+### 코드베이스에 컴파일러 적용하기
+
+#### 일부 디렉토리에만 컴파일러 실행해보기
 
 ```jsx
 const ReactCompilerConfig = {
@@ -390,7 +532,7 @@ const ReactCompilerConfig = {
 };
 ```
 
-새로운 프로젝트에 컴파일러 사용하기
+#### 새로운 프로젝트에 컴파일러 사용하기
 
 - 리액트 v17-18 버전에서 최적화된 코드를 실행하기 위해서는 아래 패키지 추가 설치 필요
 
@@ -398,19 +540,16 @@ const ReactCompilerConfig = {
 npm install react-compiler-runtime@beta
 ```
 
-- `babel.config.js` 타겟 버전 명시
-  - 리액트 버전에 따라 올바른 API를 적용하고, 필요한 경우 누락된 API를 폴리필한다.
+- 리액트 컴파일러 적용 후 성능 최적화
 
-```bash
-const ReactCompilerConfig = {
-  target: '18' // '17' | '18' | '19'
-};
+  <img src="/assets/images/posts_img/react-setup/react-compiler-memo.png" width="500"/>
 
-module.exports = function () {
-  return {
-    plugins: [
-      ['babel-plugin-react-compiler', ReactCompilerConfig],
-    ],
-  };
-};
-```
+- 리액트 컴파일러가 자동으로 컴포넌트와 Hook을 메모제이션해 불필요한 리렌더링을 최소화
+
+  <img src="/assets/images/posts_img/react-setup/react-compiler-before-apply.png" width="300"/>
+  <img src="/assets/images/posts_img/react-setup/react-compiler-on-apply.png" width="300"/>
+
+- 최적화가 전혀 되지 않은 프로젝트에 리액트 컴파일러를 적용했더니 렌더링 소요시간이 5.6ms -> 1ms 로 줄어듦
+- 컴파일러를 적용하고 싶지 않은 부분이 있으면 'use no memo'지시어를 사용하면 해당 컴포넌트만 제외시킬 수 있음
+
+> 실무에서 프로젝트에 전체적으로 적용하기에는 아직 안정되지 않아 실행이 되지 않는 코드들도 생길 것 같다. 최적화가 중요한 부분에 일부 적용하면 좋은 효과를 얻을 수 있을 것 같음
