@@ -203,7 +203,8 @@ npm install @types/react @types/react-dom
     <br>
 
 - React + Vite + Typescript 프로젝트 설정
-  `tsconfig.json` 기본 설정 및 공통 설정 관리
+
+`tsconfig.json` 기본 설정 및 공통 설정 관리
 
 ```json
 {
@@ -281,7 +282,7 @@ npm install @types/react @types/react-dom
 }
 ```
 
-> **📌tsconfig.json + tsconfig.app.json + tsconfig.node.json** 구조의 장점<br>
+> **📌 tsconfig.json + tsconfig.app.json + tsconfig.node.json** 구조의 장점<br>
 >
 > - 다양한 빌드 환경 지원
 >   - tsconfig.app.json → React 클라이언트 코드 전용
@@ -506,6 +507,9 @@ export default defineConfig({
     react({
       babel: {
         plugins: [["babel-plugin-react-compiler"]],
+        {
+          include: ['src/path/to/dir/**/*.tsx', 'src/path/to/dir/**/*.jsx'], // 일부 파일에만 적용하고 싶을 때
+        },
       },
     }),
     tailwindcss(),
@@ -522,18 +526,6 @@ export default defineConfig({
 
 ### 코드베이스에 컴파일러 적용하기
 
-#### 일부 디렉토리에만 컴파일러 실행해보기
-
-```jsx
-const ReactCompilerConfig = {
-  sources: (filename) => {
-    return filename.indexOf("src/path/to/dir") !== -1;
-  },
-};
-```
-
-#### 새로운 프로젝트에 컴파일러 사용하기
-
 - 리액트 v17-18 버전에서 최적화된 코드를 실행하기 위해서는 아래 패키지 추가 설치 필요
 
 ```bash
@@ -542,14 +534,14 @@ npm install react-compiler-runtime@beta
 
 - 리액트 컴파일러 적용 후 성능 최적화
 
-  <img src="/assets/images/posts_img/react-setup/react-compiler-memo.png" width="500"/>
+  <img src="/assets/images/posts_img/react-setup/react-compiler-memo.png"/>
 
 - 리액트 컴파일러가 자동으로 컴포넌트와 Hook을 메모제이션해 불필요한 리렌더링을 최소화
 
-  <img src="/assets/images/posts_img/react-setup/react-compiler-before-apply.png" width="300"/>
-  <img src="/assets/images/posts_img/react-setup/react-compiler-on-apply.png" width="300"/>
+  <img src="/assets/images/posts_img/react-setup/react-compiler-before-apply.png" width="400"/>
+  <img src="/assets/images/posts_img/react-setup/react-compiler-on-apply.png" width="400"/>
 
-- 최적화가 전혀 되지 않은 프로젝트에 리액트 컴파일러를 적용했더니 렌더링 소요시간이 5.6ms -> 1ms 로 줄어듦
+- 최적화가 전혀 되지 않은 프로젝트에 리액트 컴파일러를 적용했더니 렌더링 소요시간이 5.6ms => 1ms 로 줄어듦
 - 컴파일러를 적용하고 싶지 않은 부분이 있으면 'use no memo'지시어를 사용하면 해당 컴포넌트만 제외시킬 수 있음
 
-> 실무에서 프로젝트에 전체적으로 적용하기에는 아직 안정되지 않아 실행이 되지 않는 코드들도 생길 것 같다. 최적화가 중요한 부분에 일부 적용하면 좋은 효과를 얻을 수 있을 것 같음
+> 실무에서 프로젝트에 전체적으로 적용하기에는 아직 안정되지 않아 위험 부담도 있는 것 같다. 최적화가 중요한 부분에 일부 적용하면 좋은 효과를 얻을 수 있을 것 같음
