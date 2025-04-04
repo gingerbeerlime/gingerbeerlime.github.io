@@ -1,35 +1,23 @@
 ---
-
 title: "React 주요 개념 훑어보기"
 
-excerpt: "React 공식문서 읽기 스터디(1주차)-빠르게 시작하기"
-
-  
+excerpt: "React v19 공식문서-빠르게 시작하기"
 
 categories:
-
-- React
+  - React
 
 tags:
-
-- [react, react19, react concept, jsx, react hook]
-
-  
+  - [react, react19, react concept, jsx, react hook]
 
 permalink: /categories/react/react-concept/
-
-  
 
 toc: true
 
 toc_sticky: true
 
-  
-
 date: 2025-03-15
 
 last_modified_at: 2025-03-15
-
 ---
 
 ## 리액트 핵심 개념
@@ -42,25 +30,23 @@ last_modified_at: 2025-03-15
 
 [리액트v19 공식문서-빠르게 시작하기](https://ko.react.dev/learn)
 
-***
+---
 
 ### 1️⃣ 컴포넌트 만들고 중첩하는 방법
 
 **리액트 컴포넌트 ?** 리액트 앱은 컴포넌트로 구성되며 컴포넌트는 마크업을 반환하는 자바스크립트 함수이다.
 
 ```jsx
-function MyButton () {
- return (
-  <button>I'm a button</button>
- )
+function MyButton() {
+  return <button>I'm a button</button>;
 }
 
-export default function MyApp () {
- return (
-  <div>
-   <MyButton />
-  </div>
- )
+export default function MyApp() {
+  return (
+    <div>
+      <MyButton />
+    </div>
+  );
 }
 ```
 
@@ -87,18 +73,18 @@ export default function MyApp () {
 
 ```jsx
 return (
- <div>
-  <h1>{user.name}</h1>
-  <img
-   src={user.imageUrl}
-   alt={'Photo of ' + user.name}
-   style={{
-    width: user.imageSize,
-    height: user.imageSize
-   }}
-  />
- </div>
-)
+  <div>
+    <h1>{user.name}</h1>
+    <img
+      src={user.imageUrl}
+      alt={"Photo of " + user.name}
+      style={{
+        width: user.imageSize,
+        height: user.imageSize,
+      }}
+    />
+  </div>
+);
 ```
 
 <br/>
@@ -112,22 +98,18 @@ return (
 - 아무것도 렌더링 하지 않을 때는 null로 표시
 - && 연산자를 이용할 때 falsy한 값은 null과 같이 아무것도 렌더링 되지 않으나, 예외적으로 숫자 0은 화면에 표시됨
 
-***
+---
 
 #### 리스트 렌더링
 
 - for문 또는 map()함수 사용
 
 ```jsx
-const listItems = products.map(product =>
- <li key={product.id}>
-  {product.title}
- </li>
-)
+const listItems = products.map((product) => (
+  <li key={product.id}>{product.title}</li>
+));
 
-return (
- <ul>{listItems}</ul>
-)
+return <ul>{listItems}</ul>;
 ```
 
 ✅ 유의사항
@@ -144,13 +126,11 @@ return (
 
 ```jsx
 function MyButton() {
- function handleClick() {
-  alert('click!')
- }
- 
- return (
-  <button onClick={handleClick}></button>
- )
+  function handleClick() {
+    alert("click!");
+  }
+
+  return <button onClick={handleClick}></button>;
 }
 ```
 
@@ -161,22 +141,22 @@ function MyButton() {
 
 ✅ 유의사항
 
-- onClick={handleClick}  함수를 props로 전달하는 것 (올바른 방법)
+- onClick={handleClick} 함수를 props로 전달하는 것 (올바른 방법)
 - onClick={handleClick(0)} 함수를 호출하는 것 (틀린 방법, 무한 루프)
-    - handleClick이 state값을 업데이트하는 로직을 실행시키는 경우 재렌더링되는데 그 때 다시 handleClick(0)이 실행되며 무한 루프에 빠지게 됨
+  - handleClick이 state값을 업데이트하는 로직을 실행시키는 경우 재렌더링되는데 그 때 다시 handleClick(0)이 실행되며 무한 루프에 빠지게 됨
 - onClick={() ⇒ handleClick(0)} props로 함수를 전달하되, 클릭 이벤트시 handleClick(0)이 실행되도록 함
 
-***
+---
 
 ### 화면 업데이트(useState)
 
 **useState ?** 리액트에서 컴포넌트의 상태(state)를 관리하는 기능. 변할 수 있는 값을 저장하고 업데이트할 때 사용
 
 ```jsx
-import { useState } from 'react';
+import { useState } from "react";
 
 function MyButton() {
- const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 }
 ```
 
@@ -196,7 +176,7 @@ function MyButton() {
 - 형제 컴포넌트 간에 하나의 state를 공유해야할 때 부모 컴포넌트로 state를 끌어올려 공유할 수 있다. 자식 컴포넌트에서는 부모 컴포넌트로부터 state값을 props로 받아 표시할 수 있다.
 
 ```jsx
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function MyApp() {
   const [count, setCount] = useState(0);
@@ -215,10 +195,6 @@ export default function MyApp() {
 }
 
 function MyButton({ count, onClick }) {
-  return (
-    <button onClick={onClick}>
-      Clicked {count} times
-    </button>
-  );
+  return <button onClick={onClick}>Clicked {count} times</button>;
 }
 ```

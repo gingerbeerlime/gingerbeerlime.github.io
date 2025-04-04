@@ -1,7 +1,7 @@
 ---
 title: "React 사고하기: 필터링 테이블 구현"
 
-excerpt: "React 공식문서 읽기 스터디(2주차)-리액트로 사고하기"
+excerpt: "React v19 공식문서-리액트로 사고하기"
 
 categories:
   - React

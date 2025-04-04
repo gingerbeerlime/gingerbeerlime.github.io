@@ -1,7 +1,7 @@
 ---
 title: "React 설치하기: React + Vite + Typescript 프로젝트 셋업"
 
-excerpt: "React 공식문서 읽기 스터디(2주차)-설치하기"
+excerpt: "React v19 공식문서-설치하기"
 
 categories:
   - React
@@ -22,7 +22,7 @@ last_modified_at: 2025-03-23
 
 ## 설치하기
 
-[리액트v19 공식문서-설치하기](https://ko.react.dev/learn/installation)
+[리액트v19 공식문서-설치하기] <https://ko.react.dev/learn/installation>
 
 ---
 

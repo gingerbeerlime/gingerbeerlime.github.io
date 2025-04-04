@@ -1,7 +1,7 @@
 ---
 title: "React UI 표현하기: 리액트 컴포넌트 기본 사용법"
 
-excerpt: "React 공식문서 읽기-리액트 컴포넌트 구성, 컴포넌트 내보내기, JSX, Props"
+excerpt: "React v19 공식문서-리액트 컴포넌트 구성, 컴포넌트 내보내기, JSX, Props"
 
 categories:
   - React

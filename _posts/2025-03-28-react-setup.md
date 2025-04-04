@@ -1,7 +1,7 @@
 ---
-title: "React 개발환경 설정하기: 린팅, 포맷팅, 타입스크립트, 리액트 컴파일러"
+title: "React 개발환경 설정하기"
 
-excerpt: "React 공식문서 읽기 스터디(3주차)-리액트 환경설정"
+excerpt: "React v19 공식문서-린팅, 포맷팅, 타입스크립트, 리액트 컴파일러"
 
 categories:
   - React
