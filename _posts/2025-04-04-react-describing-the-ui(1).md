@@ -37,14 +37,15 @@ last_modified_at: 2025-04-04
 ### 리액트 컴포넌트
 
 마크업으로 뿌릴 수 있는 JavaScript 함수. 리액트 애플리케이션은 리액트 컴포넌트로 구성된다.
+<br />
 
-> 📌
->
-> - 리액트 앱은 루트 컴포넌트에서 시작됨
-> - 리액트의 모든 UI는 컴포넌트로 구성됨 - 버튼, 사이드바, 리스트, 페이지 전체까지 모두 컴포넌트로 구성됨
-> - 리액트는 빈 HTML 파일에서 시작하고, JavaScript가 로드되면서 화면을 그려줌
-> - 단, Next.js 같은 SSR 프레임워크는 HTML을 미리 생성할 수도 있음
-> - 리액트를 웹사이트의 특정 부분에서만 사용하는 것도 가능 ⇒ 이런 경우, 여러 개의 루트 컴포넌트가 한 페이지에 존재할 수 있음
+- 리액트 앱은 루트 컴포넌트에서 시작됨
+- 리액트의 모든 UI는 컴포넌트로 구성됨 - 버튼, 사이드바, 리스트, 페이지 전체까지 모두 컴포넌트로 구성됨
+- 리액트는 빈 HTML 파일에서 시작하고, JavaScript가 로드되면서 화면을 그려줌
+- 단, Next.js 같은 SSR 프레임워크는 HTML을 미리 생성할 수도 있음
+- 리액트를 웹사이트의 특정 부분에서만 사용하는 것도 가능 ⇒ 이런 경우, 여러 개의 루트 컴포넌트가 한 페이지에 존재할 수 있음
+
+<br />
 
 ### 컴포넌트 정의하기
 
@@ -61,6 +62,8 @@ export default function Profile() {
 - 리액트 컴포넌트 함수 이름은 **대문자로 시작**해야함(HTML태그와 구분됨)
 
 (3) 마크업 반환하기 `function 함수명() { return (JSX마크업) }`
+
+<br/>
 
 ### 컴포넌트 중첩 및 구성
 
@@ -95,6 +98,8 @@ function Profile() {
   // ...
 }
 ```
+
+<br/>
 
 ### 🧩 컴포넌트 라이브러리
 
@@ -135,14 +140,14 @@ function Profile() {
 
 ### Default vs Name Export
 
-| Syntax                                     | Default export                                    | Named export                         |
-| ------------------------------------------ | ------------------------------------------------- | ------------------------------------ |
-| export 하는 법                             | export default function Button() {}               | export function Button() {}          |
-| import 하는 법                             | import Button from ‘./button.js’                  | import { Button } from ‘./button.js’ |
-| 역할                                       | 파일에서 기본 컴포넌트임을 명시                   | 여러 컴포넌트를 export할 때 사용     |
-| 특징                                       | - 파일 내 Default export 는 하나만 존재할 수 있음 |
-| - import할 때 다른 이름으로 가져올 수 있음 | - 파일 내 여러 개의 named export를 사용할 수 있음 |
-| - import할 때 이름이 같아야함              |
+| Syntax             | Default export                                                                                   | Named export                                                                          |
+| ------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| **export 하는 법** | `export default function Button() {}`                                                            | `export function Button() {}`                                                         |
+| **import 하는 법** | `import Button from './button.js'`                                                               | `import { Button } from './button.js'`                                                |
+| **역할**           | 파일에서 기본 컴포넌트임을 명시                                                                  | 여러 컴포넌트를 export할 때 사용                                                      |
+| **특징**           | - 파일 내 Default export는 하나만 존재할 수 있음 <br> - import할 때 다른 이름으로 가져올 수 있음 | - 파일 내 여러 개의 named export를 사용할 수 있음 <br> - import할 때 이름이 같아야 함 |
+
+<br/>
 
 ### 🤔 컴포넌트를 다른 파일로 분리할 때 고려할 것
 
@@ -157,6 +162,8 @@ function Profile() {
 ## JSX로 마크업 작성하기
 
 **JSX란?** 리액트 컴포넌트에서 마크업을 표현하는 확장된 문법으로, HTML과 유사하지만 더 엄격하고 JavaScript의 동적인 표현식을 표현할 수 있다.
+
+<br/>
 
 ### JSX 규칙
 
@@ -191,6 +198,8 @@ export default function Avatar() {
 }
 ```
 
+<br/>
+
 ### ✅ JSX안에서 JavaScript 함수 호출하기
 
 ```jsx
@@ -214,6 +223,8 @@ export default function TodoList() {
 >
 > - JSX태그 내 컨텐츠에서 중괄호를 사용할 수 있지만 태그에 직접 사용할 수는 없다.
 > - src=”{imgUrl}” 로 쓰면 “{imgUrl}”문자열로 전달된다
+
+<br/>
 
 ### ✅ JSX안에서 JavaScript 객체 사용하기
 
@@ -257,6 +268,8 @@ export default function TodoList() {
 
 리액트 컴포넌트 함수는 하나의 인자, `props` 객체를 받는다
 
+<br/>
+
 ### 자식 컴포넌트에 props 전달하기
 
 ```jsx
@@ -264,6 +277,8 @@ export default function Profile() {
   return <Avatar person={{ name: "ginger", imgId: "abc123" }} size={100} />;
 }
 ```
+
+<br/>
 
 ### 자식 컴포넌트에서 props 읽기
 
@@ -295,6 +310,8 @@ function Profile(props) {
   );
 }
 ```
+
+<br/>
 
 ### 자식을 JSX로 전달하기
 
@@ -344,6 +361,8 @@ export default function Profile() {
 }
 ```
 
+<br/>
+
 ### 시간에 따라 Props가 변하는 방식
 
 ```jsx
@@ -357,3 +376,5 @@ export default function Clock({ color, time }) {
 
 - 부모 컴포넌트에서 props로 전달하는 데이터가 변경되면 이전의 props는 버려지고(기존 props가 차지했던 메모리 회수) 새로운 props객체를 전달한다.
 - props는 읽기 전용 스냅샷으로 props가 연결된 state를 변경해야한다
+
+<br/>
