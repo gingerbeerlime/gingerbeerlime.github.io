@@ -17,7 +17,7 @@ toc_sticky: true
 
 date: 2025-04-04
 
-last_modified_at: 2025-04-04
+last_modified_at: 2025-04-06
 ---
 
 ## 리액트 UI 표현하기
@@ -170,6 +170,7 @@ function Profile() {
 (1) 하나의 루트 엘리먼트로 반환할 것
 
 - JSX는 내부적으로 일반 JavaScript 객체로 변환되기 때문에 하나의 함수에서 두 개의 객체를 반환할 수 없다. → 따라서 여러 엘리먼트를 반환할 때, `<div>...</div>` 또는 `<>...</>` 등 하나의 부모 태그로 감싸서 반환해야한다.
+- `주의` React.Fragment의 단축 문법인 `<>...</>`는 key를 줄 수 없으므로 key를 사용해야할 때는 `<React.Fragment key={item.id}>...</React.Fragment>`를 사용하거나 다른 html 태그를 사용해야함
 
 (2) 모든 태그는 명시적으로 닫혀있어야 함 `<img />` `<li></li>`
 
@@ -233,10 +234,7 @@ export default function TodoList() {
   return (
    // style 어트리뷰트와 같이 객체를 전달할 때는 {{ }} 중괄호를 쌍으로 감싸야함
    // 인라인 스타일 프로퍼티는 캐멀케이스로 작성
-    <ul style={{
-      backgroundColor: 'black',
-      color: 'pink'
-    }}>
+    <ul style={{ backgroundColor: 'black', color: 'pink' }}>
       <li>Improve the videophone</li>
       <li>Prepare aeronautics lectures</li>
       <li>Work on the alcohol-fuelled engine</li>
