@@ -230,11 +230,15 @@ export default function TodoList() {
 ### ✅ JSX안에서 JavaScript 객체 사용하기
 
 ```jsx
+const styles = {
+  backgroundColor: 'black',
+  color: 'pink'
+}
 export default function TodoList() {
   return (
    // style 어트리뷰트와 같이 객체를 전달할 때는 {{ }} 중괄호를 쌍으로 감싸야함
    // 인라인 스타일 프로퍼티는 캐멀케이스로 작성
-    <ul style={{ backgroundColor: 'black', color: 'pink' }}>
+    <ul style={{ /* inline style object */ }}>
       <li>Improve the videophone</li>
       <li>Prepare aeronautics lectures</li>
       <li>Work on the alcohol-fuelled engine</li>
@@ -272,7 +276,7 @@ export default function TodoList() {
 
 ```jsx
 export default function Profile() {
-  return <Avatar person={{ name: "ginger", imgId: "abc123" }} size={100} />;
+  return <Avatar person=&#123; name: 'ginger', imgId: 'abc123' &#125; size={100} />;
 }
 ```
 
