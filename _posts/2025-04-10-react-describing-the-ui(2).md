@@ -35,7 +35,7 @@ last_modified_at: 2025-04-10
 
 ### 조건부로 JSX 반환하기
 
-#### (1) `if` 연산자 사용하기
+(1) `if` 연산자 사용하기
 
 ```jsx
 if (isPacked) {
@@ -46,7 +46,7 @@ return <li className="item">{name}</li>;
 
 <br/>
 
-#### (2) `null` 사용해 아무것도 반환하지 않기
+(2) `null` 사용해 아무것도 반환하지 않기
 
 - null을 반환하면 아무것도 렌더링되지 않음
 
@@ -59,7 +59,7 @@ return <li className="item">{name}</li>;
 
 <br/>
 
-#### (3) `? :`삼항 조건 연산자, `&&` 사용해 간단하게 표현하기
+(3) `? :`삼항 조건 연산자, `&&` 사용해 간단하게 표현하기
 
 ```jsx
 if (isPacked) {
@@ -68,7 +68,7 @@ if (isPacked) {
 return <li className="item">{name}</li>;
 ```
 
-⬇ 삼항 조건 연산자 `? :` 사용
+⬇️ 삼항 조건 연산자 `? :` 사용
 
 ```jsx
 return <li className="item">{isPacked ? name + " ✅" : name}</li>;
@@ -91,7 +91,7 @@ return (
 
 <br/>
 
-#### (4) 변수에 조건부로 JSX 할당하기
+(4) 변수에 조건부로 JSX 할당하기
 
 ```jsx
 function Item({ name, isPacked }) {
@@ -115,6 +115,8 @@ export default function PackingList() {
 ---
 
 ## 리스트 렌더링
+
+<br/>
 
 ### 배열 데이터를 컴포넌트로 렌더링하기 : `map()`
 
@@ -170,8 +172,6 @@ export default function List() {
 
 > 💡 화살표 함수에서 return문 없이 반환할 수 있다. ⇒ 뒤에 중괄호가 오는 경우는 return을 명시해야한다.
 
-<br/>
-
 ```jsx
 const listItems = chemists.map((person) => (
   <li key={person.id}>
@@ -188,29 +188,30 @@ const listItems = chemists.map((person) => {
 });
 ```
 
-### 리스트 아이템에는 `Key`를 지정해야 함!
+<br/>
 
-#### (1) key 역할
+### 🔴 리스트 아이템에는 `Key`를 지정해야 함!
+
+(1) `key` 역할
 
 배열 항목의 정렬이나 삽입, 삭제가 되어 위치가 변경되더라도 `key`는 리액트가 생명주기 내내 해당 항목을 식별할 수 있게 함
 
-#### (2) key 소스
+(2) `key` 소스
 
 - **데이터베이스에서 데이터를 가져오는 경우** `고유한 데이터베이스 key/ID` 사용
 - **로컬에서 데이터가 생성되고 유지**되는 경우, `증분 일련번호`나 `crypto.randomUUID()` 또는 `uuid` 같은 패키지 사용
 
-#### (3) key 규칙
+(3) `key` 규칙
 
 - key는 형제 간에 고유해야 함
 - key는 변경되어서는 안됨
-- <></>에는 key를 지정할 수 없음 → <Fragment></Fragment> 사용
 
-#### (4) key 사용할 때 주의
+(4) `key` 사용할 때 주의
 
 - 배열의 인덱스를 key로 사용하지 말 것(버그 가능성) → 데이터 기반의 안정적인 ID 사용
 - key={Math.random()} 처럼 즉석에서 key를 생성하지 말 것
 - key는 prop으로 전달되지 않음
-- <></>에는 key를 지정할 수 없음 → <Fragment></Fragment> 사용
+- <></>에는 key를 지정할 수 없음 → `<Fragment></Fragment>` 사용
 
 ```jsx
 import { recipes } from './data.js';
@@ -249,12 +250,12 @@ export default function RecipeList() {
 
 ### 리액트에서 작성되는 모든 컴포넌트는 순수 함수여야 한다
 
-#### 순수함수 ?
-
 - **자기 일만 한다.** → 함수가 외부에 있는 변수나 객체는 변경하지 않는다
 - **같은 입력, 같은 출력. →** 같은 입력이면 항상 같은 결과를 준다
 
 ⇒ **리액트에서 순수성** : 리액트 컴포넌트에 같은 입력이 주어진다면, 반드시 같은 JSX를 반환한다.
+
+<br/>
 
 🚫 **순수성 규칙을 위반하는 컴포넌트**
 
@@ -281,8 +282,6 @@ export default function TeaSet() {
 - 컴포넌트 바깥에 선언된 guest 라는 변수를 수정하고 있음
 - ⇒ 컴포넌트를 여러번 호출하면 각각 다른 JSX를 생성한다.
 - 위 코드는 실제로 출력될 때 `guest#2, guest#4, guest#6` 이 출력되는데 이는 `“Strict Mode"`가 개발 중에 컴포넌트 함수를 두 번 호출하기 때문이다.
-
-<br/>
 
 ```jsx
 import { StrictMode } from 'react'
@@ -401,16 +400,16 @@ export default function StoryTray({ stories }) {
 ### 렌더 트리
 
 - 리액트에서 컴포넌트들이 실제로 렌더링되는 구조를 나타내는 트리, 리액트는 렌더 트리를 기반으로 화면에 어떻게 표시할지 결정
-- 각 노드(컴포넌트)는 부모-자식 관계를 가짐
-- 트리 구조는 컴포넌트 간의 관계 이해. 더 나아가 데이터 흐름과 상태 관리를 이해하는데 도움을 준다
-- 렌더 트리는 렌더링 최적화와 디버깅 유지보수에도 활용할 수 있다
+- 각 노드(컴포넌트)는 **부모-자식 관계**를 가짐
+- 트리 구조는 **컴포넌트 간의 관계** 이해. 더 나아가 **데이터 흐름**과 **상태 관리**를 이해하는데 도움을 준다
+- 렌더 트리는 **렌더링 최적화**와 **디버깅 유지보수**에도 활용할 수 있다
 
 ```mermaid
 flowchart TD
     A(App) -->|renders| B1(InspirationGenerator)
     A -->|renders| B2(FancyText)
-    B1 -. renders? .-> C1(FancyText)
-    B1 -. renders? .-> C2(Color)
+    B1 -->|renders?| C1(FancyText)
+    B1 -->|renders?| C2(Color)
     B1 --> |renders| C3(Copyright)
 
 ```
