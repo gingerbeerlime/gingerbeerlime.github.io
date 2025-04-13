@@ -27,7 +27,7 @@ last_modified_at: 2025-04-10
 - 컴포넌트를 순수하게 유지하기
 - 트리로서의 UI
 
-[리액트v19 공식문서-UI 표현하기] <https://ko.react.dev/learn/describing-the-ui>
+[리액트v19 공식문서-UI 표현하기] <https://ko.react.dev/learn/conditional-rendering>
 
 ---
 
@@ -194,7 +194,9 @@ const listItems = chemists.map((person) => {
 
 (1) `key` 역할
 
-배열 항목의 정렬이나 삽입, 삭제가 되어 위치가 변경되더라도 `key`는 리액트가 생명주기 내내 해당 항목을 식별할 수 있게 함
+- key는 엘리먼트 리스트를 만들 때 포함해야 하는 특수한 문자열 어트리뷰트
+- key는 리액트가 어떤 항목을 변경, 추가 또는 삭제할지 식별하는 것을 돕는다
+  - key가 없는 경우 리액트는 가상돔을 비교하는 과정에서 리스트를 순차적으로 비교하여 변화를 감지한다. 하지만 key가 있다면 리스트간 변화를 효율적으로 탐색하여 DOM 업데이트를 최소화하여 성능을 최적화한다.
 
 (2) `key` 소스
 
@@ -208,7 +210,14 @@ const listItems = chemists.map((person) => {
 
 (4) `key` 사용할 때 주의
 
-- 배열의 인덱스를 key로 사용하지 말 것(버그 가능성) → 데이터 기반의 안정적인 ID 사용
+- key를 지정하지 않으면 리액트는 기본적으로 인덱스를 key로 사용한다. 리스트가 재정렬되거나 필터링되는 등 순서가 바뀔 수 있는 경우는 key를 index로 사용하지 않아야한다.
+  > 리액트의 비교 알고리즘(Diffing Algorithm): 리액트가 기존의 tree(realDOM)와 변경된 tree를 비교하는 방식
+  >
+  > 1. 엘리먼트 타입이 달라지는 경우: 리액트는 이전 트리를 버리고 완전히 새로운 트리를 생성한다.
+  > 2. DOM 엘리먼트 타입이 같은 경우: 리액트는 동일한 내역은 유지하고 변경된 속성만 갱신한다.
+  >    DOM 노드의 처리가 끝나면, 리액트는 이어서 해당 노드의 자식들을 재귀적으로 처리한다. 리액트는 동시에 두 리스트를 순회하고 차이점이 있으면 변경을 생성한다.
+  >
+  > - 리액트에서 자식들이 key를 가지고 있다면, key를 통해 기존 트리와 이후 트리의 자식이 일치하는지 확인한다. 같은 key값을 갖고 있다면 같은 컴포넌트라 생각하게 되어 기존의 컴포넌트의 상태와 내부를 유지한다. 따라서 index를 key로 사용하게 되면 재배열 시 문제가 생길 수 있다.
 - key={Math.random()} 처럼 즉석에서 key를 생성하지 말 것
 - key는 prop으로 전달되지 않음
 - <></>에는 key를 지정할 수 없음 → `<Fragment></Fragment>` 사용
@@ -257,7 +266,7 @@ export default function RecipeList() {
 
 <br/>
 
-🚫 **순수성 규칙을 위반하는 컴포넌트**
+🚫 **순수성 규칙을 위반하는 컴포넌트** : 함수 외부의 변수 변경
 
 ```jsx
 let guest = 0;
@@ -343,12 +352,12 @@ export default function TeaGathering() {
 > 🔴 이벤트 핸들러는 순수할 필요가 없다.
 > 이벤트 핸들러는 보통 사이드 이펙트를 발생시키긴 하지만, 렌더링 중에 실행되는 것이 아니므로 순수성을 위반하지 않는다.
 > useEffect 또한 렌더링 이후 실행되기 때문에, 사이드 이펙트를 발생시켜도 괜찮지만 권장되는 방법은 아니다.
-
-- **사이드 이펙트(Side Effect)란?** 화면을 업데이트하거나, 애니메이션을 시작하거나, 데이터를 바꾸는 것처럼 렌더링 외에 일어나는 일
+>
+> - **사이드 이펙트(Side Effect)란?** 화면을 업데이트하거나, 애니메이션을 시작하거나, 데이터를 바꾸는 것처럼 렌더링 외에 일어나는 일
 
 <br/>
 
-🚫 **순수성 규칙을 위반하는 컴포넌트**
+🚫 **순수성 규칙을 위반하는 컴포넌트** : props를 직접 수정
 
 ```jsx
 export default function StoryTray({ stories }) {
@@ -374,7 +383,7 @@ export default function StoryTray({ stories }) {
 
 ```jsx
 export default function StoryTray({ stories }) {
-  // props를 새로운 배열로 복사
+  // props를 새로운 배열로 복사해서 가공
   let storiesToDisplay = stories.slice();
 
   // 원본 데이터인 stories는 변경되지 않는다
@@ -404,29 +413,10 @@ export default function StoryTray({ stories }) {
 - 트리 구조는 **컴포넌트 간의 관계** 이해. 더 나아가 **데이터 흐름**과 **상태 관리**를 이해하는데 도움을 준다
 - 렌더 트리는 **렌더링 최적화**와 **디버깅 유지보수**에도 활용할 수 있다
 
-```mermaid
-flowchart TD
-    A(App) -->|renders| B1(InspirationGenerator)
-    A -->|renders| B2(FancyText)
-    B1 -->|renders?| C1(FancyText)
-    B1 -->|renders?| C2(Color)
-    B1 --> |renders| C3(Copyright)
-
-```
+<br/>
 
 ### 모듈 의존성 트리
 
 - 컴포넌트 간의 모듈 의존성을 나타내는 트리
 - 각 노드는 모듈이며, 각 가지는 해당 모듈의 `import`문을 나타낸다.
 - 의존성 트리는 앱을 배포하기 위해 필요한 코드를 번들로 묶는 데 빌드 도구에서 사용된다.
-
-```mermaid
-flowchart TD
-    A(App.js) -->|imports| B1(InspirationGenerator.js)
-    A -->|imports| B2(FancyText.js)
-    A -->|imports| B3(Copyright.js)
-    B1 -->|imports| C1(FancyText.js)
-    B1 -->|imports| C2(Color.js)
-    B1 -->|imports| C3(inspirations.js)
-
-```
