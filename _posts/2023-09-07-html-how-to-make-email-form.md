@@ -12,8 +12,8 @@ permalink: /categories/html/how-to-make-email-template/
 toc: true
 toc_sticky: true
 
-date: 2023-09-07
-last_modified_at: 2023-09-08
+date: 2099-09-07
+last_modified_at: 2099-09-08
 ---
 
 ## 이메일 템플릿
@@ -34,26 +34,27 @@ last_modified_at: 2023-09-08
 4. 고정된 내용의 컨텐츠가 아니라, 매주 배치가 돌며 데이터가 들어가서 이메일 템플릿이 완성되어야하는데, 이를 어떻게 구현할 것인가
 5. 차트가 들어가는 컨텐츠가 많은데, chart.js 라이브러리를 사용한 부분을 어떻게 순수 html 구조로 만들것인가
 
-***
+---
 
 ### ✅ 이메일 템플릿 요구사항
 
 > **Email Template HTML**<br/>
+
 - Vetur와 Volar은 vue프레임워크에서 코드 작성시 **하이라이팅, 에러체크, 포맷팅, 디버깅, 코드 자동완성**등의 코딩을 편하게 도와주는 기능을 제공한다<br/>
 - Vue2에서 Vue3로 업데이트되면서 보조 확장 프로그램도 Vetur에서 Volar로 권장된다<br/>
 - Volar은 Typescript 지원이 잘되고, Monorepo 구조에서도 잘 작동한다<br/>
 - 하지만 Vue2버전에서는 유지보수에서 여전히 Vetur를 사용하는 것이 좋기 때문에 해당 프로젝트에만 Vetur를 사용하도록 설정할 수 있다(extention 아이콘 마우스 우클릭 > 사용(작업영역)
 
-***
+---
 
 ### ✅ 순수 HTML 템플릿
 
-***
+---
 
 ### ✅ 인라인 CSS
 
-***
+---
 
 ### ✅ Chart.js
 
-***
+---
