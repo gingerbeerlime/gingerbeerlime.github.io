@@ -26,7 +26,7 @@ last_modified_at: 2025-04-20
 - State: 컴포넌트의 기억 저장소
 - 렌더링 그리고 커밋
 
-[리액트v19 공식문서-UI 표현하기] <https://ko.react.dev/learn/adding-interactivity>
+[리액트v19 공식문서-상호작용 더하기] <https://ko.react.dev/learn/adding-interactivity>
 
 ---
 
@@ -363,8 +363,6 @@ export default function FeedbackForm() {
 1. 컴포넌트의 **초기 렌더링인 경우**
 2. 컴포넌트의 **state가 업데이트된 경우**
 
-<br/>
-
 #### (1) 초기 렌더링
 
 - `createRoot`호출 후 `render` 메서드 호출
@@ -376,8 +374,6 @@ import { createRoot } from "react-dom/client";
 const root = createRoot(document.getElementById("root"));
 root.render(<Image />);
 ```
-
-<br/>
 
 #### (2) state 업데이트 시 리렌더링
 
