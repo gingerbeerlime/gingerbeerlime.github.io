@@ -1,7 +1,7 @@
 ---
 title: "React State 관리하기: State 구조화 방식"
 
-excerpt: "React v19 공식문서-불필요한 상태와 버그를 줄이는 state 설계 방식
+excerpt: "React v19 공식문서-불필요한 상태와 버그를 줄이는 state 설계 방식"
 
 categories:
   - React
