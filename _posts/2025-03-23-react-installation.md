@@ -161,7 +161,7 @@ npm install
 npm install tailwindcss @tailwindcss/vite
 ```
 
-`src/index.css`
+`src/index.css` -> `src/global.css`로 변경 후 `main.tsx`에서 불러와야 함
 
 ```css
 @import "tailwindcss";
