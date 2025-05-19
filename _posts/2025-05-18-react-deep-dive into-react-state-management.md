@@ -893,8 +893,9 @@ export default function Page() {
        ```
 
 > 🤔 이 챕터의 예시코드와 챌린지 문제 코드를 보면 모두 Context의 데이터를 지정하는 곳에 `.Provider`를 붙이지 않고 있는데 작동도 잘 되고 있다. 그래서 `.Provider`를 붙이는 것과 아닌 것에는 무슨 차이가 있을까?
-> `<ImageSizeContext value={imageSize}>`이렇게 작성해도 JSX에서 자동으로 `.Provider`를 인식해서 `<ImageSizeContext.Provider value={imageSize}>`이렇게 암묵적으로 자동 해석한다고 한다. 실제로 콘솔에 ImageSizeContext를 찍어봐도 자동으로 Provider로 인식하고 있음을 알 수 있다. 하지만 .Provider를 붙여서 명확하게 작성하는 것이 좋다.
-> <img src="/assets/images/posts_img/react-installation/react-installation-shadcn-test.png" width="300"/>
+
+> `<ImageSizeContext value={imageSize}>`이렇게 작성해도 JSX에서 자동으로 `.Provider`를 인식해서 `<ImageSizeContext.Provider value={imageSize}>`로 암묵적으로 자동 해석한다고 한다. 실제로 콘솔에 ImageSizeContext를 찍어봐도 자동으로 Provider로 인식하고 있음을 알 수 있다. 하지만 `.Provider`를 붙여서 명확하게 작성하는 것이 좋다.
+> <img src="/assets/images/posts_img/react-deep-dive-into-react-state-management/react-context-provider-config.png" width="300"/>
 
 ---
 
