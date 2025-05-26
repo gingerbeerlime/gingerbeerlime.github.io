@@ -1,5 +1,5 @@
 ---
-title: "React 상태 관리를 더 깊게: Ref 사용하기"
+title: "React에서 useRef 사용하기: 언제 State 대신 Ref를 써야 할까?"
 
 excerpt: "React v19 공식문서-Ref로 값 참조하기, Ref로 DOM 조작하기"
 
@@ -262,13 +262,14 @@ export default function Form() {
   - `key - cat` / `value - DOM 노드(<li>)` 형태로 **Map**에 저장 → itemsRef는 여러개의 DOM 노드 정보를 가짐
     - DOM 요소가 **마운트**될 때 → `map.set(cat, node)`
     - DOM 요소가 **언마운트**될 때 → `map.delete(cat)`(클린업 함수) → node는 null이 됨
-  - `const node = map.get(cat)`으로 해당 고양이 이미지 노드를 찾아 스크롤할 수 있다.
+    - 같은 컴포넌트가 다른 DOM 노드에 재사용될 수 있기 때문에 클린업 함수를 설정하는 것은 중요하다
+  - `const node = map.get(cat)`으로 해당 고양이 이미지 노드를 찾아 스크롤할 수 있다
 
 <br/>
 
 ### 다른 컴포넌트의 DOM 노드 접근하기
 
-- 컴포넌트는 기본적으로 자신의 DOM 노드를 외부에 노출하지 않는다.
+- 컴포넌트는 기본적으로 자신의 DOM 노드를 외부에 노출하지 않는다
 - ⇒ `ref` **prop**을 사용하여 DOM노드를 노출하도록 선택할 수 있다
 
 > ⚠️ React 18까지는 `forwardRef`를 반드시 사용해야했지만, React 19부**터는** 필요하지 않음(향후 deprecated 예정)
