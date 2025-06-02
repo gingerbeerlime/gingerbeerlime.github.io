@@ -1,13 +1,13 @@
 ---
-title: "React useEffect와 클로저: 상태가 갇히는 이유와 해결법"
+title: "React useEffect에서 발생하는 오래된 값(Stale value) 버그: 클로저로 인한 상태 갇힘 현상과 해결 방법"
 
-excerpt: "React v19 공식문서 useEffect 챌린지 문제 풀이 : Invetigate a stale value bug"
+excerpt: "React v19 공식문서 useEffect 챌린지로 배우는 클로저와 상태 관리의 핵심"
 
 categories:
   - React
 
 tags:
-  - [react, react19, jsx, effect]
+  - [react, react19, jsx, effect, closure, stale value]
 
 permalink: /categories/react/how-to-solve-stale-value-bug/
 
