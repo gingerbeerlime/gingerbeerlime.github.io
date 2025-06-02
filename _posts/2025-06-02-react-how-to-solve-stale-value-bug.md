@@ -15,9 +15,9 @@ toc: true
 
 toc_sticky: true
 
-date: 2024-06-02
+date: 2025-06-02
 
-last_modified_at: 2024-06-02
+last_modified_at: 2025-06-02
 ---
 
 ## 리액트에서 발생하는 "오래된 값 버그(stale value bug)" 해결하기
