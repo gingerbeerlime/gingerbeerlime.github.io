@@ -77,6 +77,8 @@ function MyComponent() {
 
 🧪 체크박스를 꺼도 동작이 포인터가 계속 움직이는 문제 해결하기
 
+{% raw %}
+
 ```jsx
 import { useState, useEffect } from "react";
 
@@ -125,6 +127,8 @@ export default function App() {
   );
 }
 ```
+
+{% endraw %}
 
 **🐞 `문제원인`**
 
