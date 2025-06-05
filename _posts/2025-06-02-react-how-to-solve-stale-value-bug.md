@@ -206,3 +206,26 @@ useEffect(() => {
 - `useCallback`은 `canMove`가 바뀔 때마다 새로운 `handleMove`함수를 생성
 - 이렇게 생성된 `handleMove`는 최신 `canMove` 값을 포함하는 클로저가 되고,
 - `useEffect`는 `handleMove를` 의존성으로 가지므로 리스너도 자동으로 교체된다.
+
+<br/>
+
+⇒ [`💡해결4`] **Effect Event 사용하기**
+
+> 🔴 아직 안정된 버전의 React에 출시되지 않은 실험적인 API <br/>
+> [리액트 공식문서 - Effect Event](https://ko.react.dev/learn/separating-events-from-effects)
+
+```jsx
+const onMove = useEffectEvent((e) => {
+  if (canMove) {
+    setPosition({ x: e.clientX, y: e.clientY });
+  }
+});
+
+useEffect(() => {
+  window.addEventListener("pointermove", onMove);
+  return () => window.removeEventListener("pointermove", onMove);
+}, []);
+```
+
+- `useEffectEvent`는 매번 렌더링 시 최신 상태를 유지하면서도 `useEffect` 안에서 클로저가 고정되는 문제를 방지하기 위해 사용된다.
+- `Effect Event`로 선언된 onMove 함수는 내부의 로직은 반응형이 아니면서 항상 최신 `state`값(`canMove`)을 바라본다.
