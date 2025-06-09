@@ -1227,6 +1227,8 @@ export function usePointerPosition() {
 
 `App`
 
+{% raw %}
+
 ```jsx
 import { usePointerPosition } from "./usePointerPosition.js";
 
@@ -1271,6 +1273,8 @@ function Dot({ position, opacity }) {
   );
 }
 ```
+
+{% endraw %}
 
 <br/>
 
