@@ -12,8 +12,8 @@ permalink: /categories/vue3/how-to-migrate-to-typescript/
 toc: true
 toc_sticky: true
 
-date: 2023-06-18
-last_modified_at: 2023-06-18
+date: 2025-06-18
+last_modified_at: 2025-06-18
 ---
 
 > 📌 Vue3 프로젝트에 TypeScript 점진적으로 적용하기

@@ -12,8 +12,8 @@ permalink: /categories/css/tailwindcss-v4-theme-and-custom-styles/
 toc: true
 toc_sticky: true
 
-date: 2023-06-24
-last_modified_at: 2023-06-24
+date: 2025-06-24
+last_modified_at: 2025-06-24
 ---
 
 > **Tailwind css v4 공통 테마, 스타일 설정**
