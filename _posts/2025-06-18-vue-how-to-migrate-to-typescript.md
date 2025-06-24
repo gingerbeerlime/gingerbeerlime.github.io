@@ -1,6 +1,6 @@
 ---
 title: "Vue3에 TypeScript 적용하기(모노레포 구조 & npm 라이브러리 배포용)"
-excerpt: "다 만들어진 Vue3 라이브러리에 TypeScript 적용하기"
+excerpt: "Vue3 라이브러리에 점진적으로 TypeScript 적용하기"
 
 categories:
   - Vue
@@ -103,9 +103,9 @@ npx tsc --init
 
 > 📌 점진적으로 ts를 적용할 때 세팅해두기 좋은 세팅
 
-> - `"noImplicitAny": false` : 타입이 정의되어있지 않으면 암묵적으로 `any` 타입으로 추론
-> - `“allowJs”: true`: 타입스크립트 프로젝트에서 자바스크립트 파일도 함께 사용
-> - `“checkJs”: false`: js파일을 타입 검사하지 않음
+- `"noImplicitAny": false` : 타입이 정의되어있지 않으면 암묵적으로 `any` 타입으로 추론
+- `“allowJs”: true`: 타입스크립트 프로젝트에서 자바스크립트 파일도 함께 사용
+- `“checkJs”: false`: js파일을 타입 검사하지 않음
 
 <br/>
 
@@ -264,3 +264,70 @@ export default defineConfig(() => {
   }
 })
 ```
+
+---
+
+## 5️⃣ TypeScript 린트 설정하기
+
+### 타입스크립트 린트 패키지 설치
+
+```bash
+pnpm add -D eslint @eslint/js typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin typescript-eslint
+```
+
+- `@eslint/js`: Flat config용 ESLint 기본 룰셋
+- `typescript`: 타입스크립트
+- `@typescript-eslint/parser`/`eslint-plugin`: TypeScript 코드를 ESLint가 이해할 수 있도록 파싱해주는 parser
+- `@typescript-eslint`: Flat config 전용 preset을 불러오기 위해 필요
+
+<br/>
+
+### ESLint 설정 파일 생성
+
+`eslint.config.js`
+
+```javascript
+{
+  ...
+  files: ['**/*.{js,mjs,cjs,vue,ts}', 'eslint.config.js'], // ts 확장자 추가
+  extends: [
+    ...standardjs.configs.base,
+    ...tseslint.configs.recommended, // tseslint config 추가
+    ...pluginVue.configs['flat/strongly-recommended']
+  ],
+}
+```
+
+--
+
+## 6️⃣ 테스트 및 빌드
+
+### ts 린트 테스트
+
+```bash
+pnpm exec eslint . --ext .ts,.vue
+```
+
+<br/>
+
+`package.json`
+
+```json
+{
+  "scripts": {
+    "lint": "eslint . --ext .js,.ts,.vue"
+  }
+}
+```
+
+```bash
+pnpm lint
+```
+
+### 라이브러리 빌드
+
+```bash
+pnpm build
+```
+
+- `dist/types/index.d.ts` 파일 생성되는지 확인

@@ -3,7 +3,7 @@ title: "Tailwindcss v4 테마 설정, 커스텀 스타일 정의하기"
 excerpt: "Tailwindcss @theme, @layer, @variant 지시어 활용하기"
 
 categories:
-  - css
+  - CSS
 tags:
   - [css, tailwindcss]
 
