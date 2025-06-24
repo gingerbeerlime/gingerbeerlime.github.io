@@ -12,8 +12,8 @@ permalink: /categories/blog/check-if-there-are-any-changes/
 toc: true
 toc_sticky: true
 
-date: 2025-02-19
-last_modified_at: 2025-02-19
+date: 2099-02-19
+last_modified_at: 2099-02-19
 ---
 
 ## ✅ 이슈사항
@@ -21,16 +21,17 @@ last_modified_at: 2025-02-19
 - 알림 수정 페이지에서 알림 설정 정보를 변경하게 되면, **월 최대 1회 발송되어야하는 월비용 알림**이 재설정되면서 새로운 기준으로 다시 발송될 수 있다.<br/>
 - 알림을 수정하는 사람(관리자)과 이메일 수신자는 다를 수 있기 때문에, 수정 버튼을 클릭할 때 미리 컨펌창을 통해 해당 내용을 알리는 것이 필요하다.<br/>
 - 실제로 변경된 내용이 없을 때에도 서버에서는 변경된 데이터 여부에 대한 검증없이 알림을 재설정하기 때문에, 이 케이스에 대한 예외처리가 추가적으로 필요하다.<br/>
-<br/>
-다른 것보다 유저가 실제로 수정한 내용없이 저장하는 경우 똑같은 내용의 알림이 다시 발송될 수 있다는 점이 애매했는데
-백엔드에서 요청한 부분은, 프론트에서 수정사항이 없는 경우에는 api요청을 아예 하지 않는 쪽이었다.<br/>
-따라서, 구현할 방향은 아래와 같다.<br/>
+  <br/>
+  다른 것보다 유저가 실제로 수정한 내용없이 저장하는 경우 똑같은 내용의 알림이 다시 발송될 수 있다는 점이 애매했는데
+  백엔드에서 요청한 부분은, 프론트에서 수정사항이 없는 경우에는 api요청을 아예 하지 않는 쪽이었다.<br/>
+  따라서, 구현할 방향은 아래와 같다.<br/>
 
 >
+
 - "월비용 알림 + 변경된 데이터가 있음" => 컨펌창 띄움<br/>
 - "월비용 알림 + 변경된 데이터가 없음 => '저장되었습니다' 토스트 메시지와 함께 알림 목록 페이지로 이동"(실제 api요청은 하지 않음)
 
-***
+---
 
 ## ✅ 해결방안
 
@@ -38,48 +39,53 @@ last_modified_at: 2025-02-19
 
 <U>사용자 폼 입력값 변경 감지</U>
 <br/>
+
 - 각각의 데이터에서 값 변화가 일어날 때, 원본과 다르면 'isModified' 값을 업데이트한다.
 
 {% raw %}
+
 ```vue
-    <script setup>
-        const isModified = ref(false);
+<script setup>
+const isModified = ref(false);
 
-        const isConfirmVisible = ref(false);
+const isConfirmVisible = ref(false);
 
-        const updateFilter = (arr) => {
-            editing.aFilter = [...arr];
-            if (original.aFilter.some(oldVal => !arr.some(newVal => newVal === oldVal))) {
-                isModified.value = true;
-            }
-        }
+const updateFilter = (arr) => {
+  editing.aFilter = [...arr];
+  if (
+    original.aFilter.some((oldVal) => !arr.some((newVal) => newVal === oldVal))
+  ) {
+    isModified.value = true;
+  }
+};
 
-        const checkValidation = async () => {
-            const { errors } = await form.value.validate();
-            if(!errors.length) {
-                if (alarmType.value = 'monthly') {
-                    if (isModified.value) {
-                        isConfirmVisible.value = true;
-                    } else {
-                        router.push({ name: 'alarm-view', parmas: { id: props.id } });
-                    }
-                } else {
-                    updateAlarm();
-                }
-            }
-        }
+const checkValidation = async () => {
+  const { errors } = await form.value.validate();
+  if (!errors.length) {
+    if ((alarmType.value = "monthly")) {
+      if (isModified.value) {
+        isConfirmVisible.value = true;
+      } else {
+        router.push({ name: "alarm-view", parmas: { id: props.id } });
+      }
+    } else {
+      updateAlarm();
+    }
+  }
+};
 
-        const updateAlarm = () => {
-            // 알림 저장
-        }
-    </script>
+const updateAlarm = () => {
+  // 알림 저장
+};
+</script>
 ```
+
 {% endraw %}
 
->
-장점
+> 장점
+
 - 실시간으로 변경을 감지하기 때문에 저장 버튼 클릭 후 로딩이 빠르다.<br/>
-단점<br/>
+  단점<br/>
 - 한번 수정이 일어나면 isModified가 true로 바뀌어, 최종적으로 다시 원본 내용과 같아지더라도 알 수 있는 방법이 없다.
 - v-model로 자동으로 업데이트 되는 데이터들에 대해 각각 watch로 감시하는 로직이 필요함
 
@@ -91,46 +97,48 @@ last_modified_at: 2025-02-19
 <U>checkValidation 통과 => 원본/수정본 비교 => 같으면 api 요청 안함 or 다르면 컨펌창 띄운 후 api 요청(saveAlarm)</U>
 
 {% raw %}
+
 ```vue
-    <script setup>
-        const isModified = ref(false);
+<script setup>
+const isModified = ref(false);
 
-        const isConfirmVisible = ref(false);
+const isConfirmVisible = ref(false);
 
-        const checkIfModified = () => {
-            if (JSON.stringify(original) !== JSON.stringify(editing)) {
-                isModified.value = true;
-            }
-            // 또는 값 하나씩 꺼내서 비교
-        }
+const checkIfModified = () => {
+  if (JSON.stringify(original) !== JSON.stringify(editing)) {
+    isModified.value = true;
+  }
+  // 또는 값 하나씩 꺼내서 비교
+};
 
-        checkValidation = async () => {
-            const { errors } = await form.value.validate();
-            if(!errors.length) {
-                if (alarmType.value = 'monthly') {
-                    await checkIfModified();
-                    if (isModified.value) {
-                        isConfirmVisible.value = true;
-                    } else {
-                        router.push({ name: 'alarm-view', parmas: { id: props.id } });
-                    }
-                } else {
-                    updateAlarm();
-                }
-            }
-        }
+checkValidation = async () => {
+  const { errors } = await form.value.validate();
+  if (!errors.length) {
+    if ((alarmType.value = "monthly")) {
+      await checkIfModified();
+      if (isModified.value) {
+        isConfirmVisible.value = true;
+      } else {
+        router.push({ name: "alarm-view", parmas: { id: props.id } });
+      }
+    } else {
+      updateAlarm();
+    }
+  }
+};
 
-        const updateAlarm = () => {
-            // 알림 저장
-        }
-    </script>
+const updateAlarm = () => {
+  // 알림 저장
+};
+</script>
 ```
+
 {% endraw %}
 
->
-장점
+> 장점
+
 - 원본과 비교해 변경된 내용이 있는지 정확한 비교가 가능하다.<br/>
-단점<br />
+  단점<br />
 - 복잡한 필터 설정이 되어있는 알림의 경우 저장버튼을 클릭할때 로딩 속도가 오래걸릴 수 있다.
 - JSON.stringify()를 쓰면 간단하게 비교할 수 있지만, 배열의 순서가 보장되지 않는 경우 다르다고 판단할 수 있고, 그렇다고 값 하나씩 비교하면 로직이 복잡해진다.
 
@@ -142,7 +150,7 @@ last_modified_at: 2025-02-19
 배열을 속성값으로 가지는 객체 타입의 필터들은 update시 바로 dirty 체크를 하고,<br/>
 나머지 단순 string 타입의 데이터와(ex. 알림명, 설정시간), 1차원 배열(ex. 수신자 이메일 리스트) 값은 저장 버튼 클릭시 비교 로직을 타도록 했다.
 
-***
+---
 
 ## 🤔느낀점
 
