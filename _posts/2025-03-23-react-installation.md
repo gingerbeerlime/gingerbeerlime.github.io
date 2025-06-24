@@ -161,7 +161,7 @@ npm install
 npm install tailwindcss @tailwindcss/vite
 ```
 
-`src/index.css` -> `src/global.css`로 변경 후 `main.tsx`에서 불러와야 함
+`index.css` 파일에 정의해도 되고 나는 기본 `App.css` 는 제거하고 `src/index.css` -> `src/global.css`로 변경 후 `main.tsx`에서 `import './global.css'`로 수정했다.
 
 ```css
 @import "tailwindcss";
@@ -222,7 +222,7 @@ export default defineConfig({
 }
 ```
 
-<br>
+<br/>
 
 #### (3) shadcn/ui 설치 및 설정
 
