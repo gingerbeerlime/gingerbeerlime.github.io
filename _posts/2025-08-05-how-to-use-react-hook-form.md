@@ -159,7 +159,7 @@ const Select = React.forwardRef(({ onChange, onBlur, name }, ref) => (
   - ex) 기본 HTML `input`, `textarea`, `select`
 - **Controlled Input (제어 컴포넌트)**
   - 리액트 `state`로만 관리되는 컴포넌트
-  - ex) `MUI TextField`, `React-Select`, Switch, Checkbox
+  - ex) `MUI TextField`, `React-Select`, `Switch`, `Checkbox`
 
 #### (2) Controller 사용해 외부 UI 라이브러리와 연결하기
 
