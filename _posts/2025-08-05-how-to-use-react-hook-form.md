@@ -33,7 +33,7 @@ last_modified_at: 2025-08-05
 
 ## React Hook Form
 
-> 리액트에서 폼 상태를 관리하고 검증을 간단하게 할 수 있도록 도와주는 라이브러리</br>
+> 리액트에서 폼 상태를 관리하고 검증을 간단하게 할 수 있도록 도와주는 라이브러리<br/>
 > ⇒ **리렌더링 최소화 + 간단하게 폼 상태와 유효성 검사 처리**
 
 ### React Hook Form을 사용하면 좋은 점
@@ -270,8 +270,6 @@ export type RegisterFormData = z.infer<typeof registerSchema>;
 ```
 
 > 💡 zod v4부터는 이메일 검증 스키마를 `z.string().email()` 이 아니라 `z.email()`로 작성
-
-</br>
 
 **(+참고) 그외 zod v4부터 지원되는 새로운 Top-level 포맷들**
 
