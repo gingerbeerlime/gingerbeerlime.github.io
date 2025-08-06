@@ -177,7 +177,7 @@ const Select = React.forwardRef(({ onChange, onBlur, name }, ref) => (
 - `Controller`가 이 필드를 `RHF`에 등록하고
 - `render` 안에서 `field`를 외부 컴포넌트에 전달
 - `field` 안에는 `RHF`가 관리하는 값과 이벤트가 들어있음
-  ```jsx
+  ```javascript
   {
     value: boolean,
     onChange: (e) => void,
@@ -222,7 +222,10 @@ schema.parse({
 
 #### (1) RHF 만 사용했을 때 한계
 
-- `RHF`는 폼 상태 관리와 유효성 검증을 돕는 라이브러리이지만, 검증 로직 자체는 직접 작성하거나 별도의 라이브러리를 연결해야 한다
+- **교차 필드 검증** : `RHF`만 쓰면 `watch`나 `getValues`를 이용해 커스텀 검증을 직접 작성해야 한다
+  - ex) `password`와 `confirmPassword`의 일치 여부
+- **복잡한 조건부/배열/객체 검증** : `RHF`의 `register` 옵션은 주로 개별 필드 단위 검증만 가능하기 때문에 커스텀 `validate`를 직접 작성해야 한다
+- **타입 안정성** : `RHF`만 쓰면 런타임 검증과 타입스크립트 타입을 별도로 관리해야 한다
 
 ```tsx
 const {
@@ -247,10 +250,13 @@ const {
 
 #### (2) Zod를 함께 사용하면 좋은점
 
-- `RHF`의 `resolver` 옵션을 사용해 `Zod`의 검증 스키마와 연결할 수 있다
-- `Zod`는 입력값 검증 결과를 자동으로 `formState.errors`에 반영해준다.
-- 검증 로직과 타입 정의를 한 곳에 관리할 수 있어 재사용성이 높다
-- `Zod`의 상세한 에러 메시지를 쉽게 폼 UI에 표시할 수 있다.
+- `RHF`의 `resolver` 옵션을 사용해 `Zod`의 검증 스키마와 쉽게 연결할 수 있다
+- **검증 로직 재사용** : `loginSchema`, `registerSchema` 처럼 스키마로 관리하면 검증 로직과 타입 정의를 한 곳에 관리할 수 있어 재사용성이 높다
+- **복잡한 검증 쉽게 표현** : 교차 필드, 조건부 필드, 배열/객체 구조 검증도 간단히 작성 가능하다
+- **타입스크립트와 완벽 연동** : `z.infer<typeof schema>` 로 폼 데이터 타입을 자동 생성
+  - 런타입 검증 + 타입 검증 일치 -> 타입 안정성 좋음
+- **깔끔한 코드** : JSX 안에서 긴 정규식, 조건식이 사라지고, 검증은 스키마로 관리
+- **자동 에러처리** : `Zod`는 입력값 검증 결과를 자동으로 `formState.errors`에 반영해준다.
 
 ```tsx
 import { z } from "zod";
@@ -313,7 +319,12 @@ export default function RegisterPage() {
     formState: { errors },
   } = useForm<RegisterFormData>({ resolver: zodResolver(registerSchema) });
 
-  const onSubmit = (data: RegisterFormData) => console.log(data);
+  const onSubmit = async (data: RegisterFormData) => {
+    await fetch("/api/register", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
